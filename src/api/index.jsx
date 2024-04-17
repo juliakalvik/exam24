@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
+import "../venues/style.css";
 
-const Fetch = () => {
+const FetchVenues = () => {
   const [venues, setVenues] = useState([]);
 
   useEffect(() => {
@@ -19,11 +20,20 @@ const Fetch = () => {
     <div>
       {venues.map((data) => (
         <div key={data.id}>
-          <p>{data.id}, {data.name}, {data.price}</p>
+            <div className="venuescard">
+                <div class="cardflex">
+                     <h2>{data.name}</h2>
+                     <p>Price per day: {data.price}</p>
+                         <img
+                      src={data.media[0].url}
+                      />
+                </div>
+                    
+            </div>
         </div>
       ))}
     </div>
   );
 };
 
-export default Fetch;
+export default FetchVenues;
