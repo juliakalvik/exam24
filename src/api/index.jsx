@@ -1,18 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import "../venues/style.css";
 
 const FetchVenues = () => {
   const [venues, setVenues] = useState([]);
 
   useEffect(() => {
-    fetch('https://v2.api.noroff.dev/holidaze/venues')
+    fetch("https://v2.api.noroff.dev/holidaze/venues?_owner=true")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
-        setVenues(data.data); 
+        console.log(data);
+        setVenues(data.data);
       })
       .catch((error) => {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       });
   }, []);
 
@@ -20,16 +20,22 @@ const FetchVenues = () => {
     <div>
       {venues.map((data) => (
         <div key={data.id}>
-            <div className="venuescard">
-                <div class="cardflex">
-                     <h2>{data.name}</h2>
-                     <p>Price per day: {data.price}</p>
-                         <img
-                      src={data.media[0].url}
-                      />
-                </div>
-                    
+          <div className="venuescard">
+            <div class="cardflex">
+              <h2>{data.name}</h2>
+              <p>Price per day: {data.price}</p>
+              <p>
+                Owner:{" "}
+                <a
+                  href={`../ownerprofile/${data.owner.name}`}
+                >
+                  {data.owner.name}
+                </a>
+              </p>
+             
+              <img src={data.media[0].url} />
             </div>
+          </div>
         </div>
       ))}
     </div>
