@@ -26,14 +26,14 @@ const FetchVenues = () => {
               <p>Price per day: {data.price}</p>
               <p>
                 Owner:{" "}
-                <a
-                  href={`../ownerprofile/${data.owner.name}`}
-                >
+                <a href={`../ownerprofile/${data.owner.name}`}>
                   {data.owner.name}
                 </a>
               </p>
-             
-              <img src={data.media[0].url} />
+
+              {data.media && data.media.length > 0 && (
+                <img src={data.media[0].url} />
+              )}
             </div>
           </div>
         </div>
@@ -43,3 +43,4 @@ const FetchVenues = () => {
 };
 
 export default FetchVenues;
+

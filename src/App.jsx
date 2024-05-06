@@ -1,11 +1,12 @@
-import FetchVenues from "./api";
 import { Outlet } from "@tanstack/react-router";
+import Home from "./pages/Home";
+import Navbar from "./components/navbar";
 
 function App() {
   return (
     <>
       <main>
-        <FetchVenues />
+        <Navbar />
         <Outlet />
       </main>
     </>
