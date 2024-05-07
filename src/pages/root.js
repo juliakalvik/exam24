@@ -4,6 +4,7 @@ import Root from "../App";
 import OwnerProfile from "./OwnerProfile";
 import FetchVenues from "../api";
 import Home from "./Home";
+import loginPage from "./Login";
 
 
 const rootRoute = new RootRoute({
@@ -21,6 +22,12 @@ const rootRoute = new RootRoute({
     path: "/venues",
     component: FetchVenues,
   });
+
+  const LoginRoute = new Route({
+    getParentRoute: () => rootRoute,
+    path: "/login",
+    component: loginPage,
+  });
   
 
 const ownerProfileRoute = new Route({
@@ -33,7 +40,8 @@ const ownerProfileRoute = new Route({
 const routeTree = rootRoute.addChildren([
   indexRoute,
   ownerProfileRoute,
-  homeRoute
+  homeRoute,
+  LoginRoute
   
 ]);
 

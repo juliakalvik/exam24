@@ -1,0 +1,34 @@
+
+header {
+  background-image: url("/hero.jpg");
+  background-size: cover; 
+  background-position: center; 
+  background-color: #f0f0f0;
+  padding: 20px;
+  padding-top: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 600px;
+}
+
+h1, p {
+    color: #f0f0f0;
+}
+
+.search-bar {
+  margin-bottom: 10px;
+}
+
+.city-buttons {
+  display: flex;
+}
+
+.city-buttons button {
+  margin-right: 10px;
+  border: 1px solid #333;
+  padding: 5px 10px;
+  background-color: #fff;
+  cursor: pointer;
+}

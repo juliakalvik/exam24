@@ -1,15 +1,30 @@
-import { Link } from "@tanstack/react-router";
-import Home from "../../pages/Home";
+import { useState } from 'react';
+import { Link } from '@tanstack/react-router';
+import "./style.css";
 
 export default function Nav() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <>
-      <p>Navbar</p>
-      <div className="navbar">
-        <Link to="/">Home</Link>
-        <Link to="/venues">Venues</Link>
-        <Link to="/ownerprofile">Owners</Link>
-      </div>
+      <nav className="navbar">
+        <div className="logo">
+          <Link to="/">VenueFindr</Link>
+        </div>
+        <div className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
+          <Link to="/venues">Browse Venues</Link>
+          <Link to="/register">Register</Link>
+          <Link to="/cart" className="bordered">Cart</Link>
+          <Link to="/login" className="bordered">Login</Link>
+        </div>
+        <div className="hamburger-menu" onClick={toggleMenu}>
+          {isMenuOpen ? 'x' : '☰'}
+        </div>
+      </nav>
     </>
   );
 }
