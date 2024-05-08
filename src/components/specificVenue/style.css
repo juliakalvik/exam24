@@ -1,0 +1,15 @@
+.header {
+    padding-top: 70px;
+}
+
+.content1 {
+    display: flex;
+}
+
+h1, p {
+    color: black;
+}
+
+img {
+    width: 400px;
+}

@@ -6,8 +6,9 @@ import FetchVenues from "../components/venues";
 import Home from "./Home";
 import loginPage from "./Login";
 import AllAdmins from "./AdminList";
-import VenueDetails from "./VenueDetails";
+
 import RegisterPage from "./Register";
+import VenueSpecific from "./VenueDetails";
 
 
 const rootRoute = new RootRoute({
@@ -29,7 +30,7 @@ const rootRoute = new RootRoute({
   const VenueDetailsRoute = new Route({
     getParentRoute: () => rootRoute,
     path: "/venuedetails",
-    component: VenueDetails,
+    component: VenueSpecific,
   });
 
   const adminsRoute = new Route({

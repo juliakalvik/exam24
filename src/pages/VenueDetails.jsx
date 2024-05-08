@@ -1,11 +1,9 @@
-export default function VenueDetails() {
+import VenueDetails from "../components/specificVenue";
+
+export default function VenueSpecific() {
     return (
       <>
-        <h1>Specific venue details:</h1>
-        <h1>Specific venue details:</h1>
-        <h1>Specific venue details:</h1>
-        <h1>Specific venue details:</h1>
-        <h1>Specific venue details:</h1>
+        <VenueDetails />
         
       </>
     );

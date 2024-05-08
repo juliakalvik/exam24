@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./style.css";
+import { Link } from "@tanstack/react-router";
 
 const FetchVenues = () => {
   const [venues, setVenues] = useState([]);
@@ -21,6 +22,7 @@ const FetchVenues = () => {
       {venues.map((data) => (
         <div key={data.id}>
           <div key={data.id} className="venuescard">
+            <Link to={`../venueDetails?venueId=${data.id}`}> Click here </Link>
             <div class="cardflex">
               <h2>{data.name}</h2>
               <p>Price per day: {data.price}</p>
