@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "../venues/style.css";
+import "./style.css";
 
 const FetchVenues = () => {
   const [venues, setVenues] = useState([]);
@@ -17,10 +17,10 @@ const FetchVenues = () => {
   }, []);
 
   return (
-    <div>
+    <div className="cardparent">
       {venues.map((data) => (
         <div key={data.id}>
-          <div className="venuescard">
+          <div key={data.id} className="venuescard">
             <div class="cardflex">
               <h2>{data.name}</h2>
               <p>Price per day: {data.price}</p>

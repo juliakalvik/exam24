@@ -3,7 +3,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1000; /* Adjust z-index as needed */
+  z-index: 1000; 
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -44,13 +44,12 @@
   .hamburger-menu {
     display: none;
     cursor: pointer;
-    margin-left: 65vw;
+    margin-left: 48vw;
     font-size: 25px;
   }
   
- 
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     .nav-links {
       display: none;
       flex-direction: column;
@@ -74,6 +73,7 @@
   
     .hamburger-menu {
       display: block;
+      margin-left: 48vw;
      
       
     }

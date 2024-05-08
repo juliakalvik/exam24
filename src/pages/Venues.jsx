@@ -1,4 +1,4 @@
-import FetchVenues from "../api";
+import FetchVenues from "../components/venues";
 
 export default function AllVenues() {
   return (

@@ -16,7 +16,7 @@ export default function Nav() {
           <Link to="/">VenueFindr</Link>
         </div>
         <div className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
-          <Link to="/venues">Browse Venues</Link>
+          <Link to="/venues">Venues</Link>
           <Link to="/register">Register</Link>
           <Link to="/cart" className="bordered">Cart</Link>
           <Link to="/login" className="bordered">Login</Link>
