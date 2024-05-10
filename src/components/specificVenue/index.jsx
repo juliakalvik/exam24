@@ -33,6 +33,7 @@ const VenueDetails = () => {
     <>
     <div className="header">
       <h1>Venue: {venue.data.name} </h1>
+      <p>Location: {venue.data.location.city}</p>
 
     </div>
     <div className="content1">

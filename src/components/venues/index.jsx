@@ -24,8 +24,9 @@ const FetchVenues = ({ searchQuery }) => {
   }, []);
 
   useEffect(() => {
+    
     const filtered = venues.filter(venue =>
-      venue.name.toLowerCase().includes(searchQuery.toLowerCase())
+      venue.name.toLowerCase().includes(searchQuery.toLowerCase()) || venue.location.city === searchQuery
     );
     setFilteredVenues(filtered);
   }, [searchQuery, venues]);
