@@ -1,13 +1,17 @@
 import React from 'react';
 import "./style.css";
 
-export default function HomeHero() {
+const HomeHero = ({ searchQuery, setSearchQuery }) => {
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
   return (
     <header>
       <h1>Venues for any event or happening</h1>
       <p>Weddings, birthday parties, proms</p>
       <div className="search-bar">
-        <input type="text" placeholder="Search by address" />
+        <input type="text" placeholder="Search by name" value={searchQuery} onChange={handleSearchChange} />
       </div>
       <div className="city-buttons">
         <button>City1</button>
@@ -18,4 +22,6 @@ export default function HomeHero() {
       </div>
     </header>
   );
-}
+};
+
+export default HomeHero;

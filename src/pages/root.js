@@ -6,7 +6,6 @@ import FetchVenues from "../components/venues";
 import Home from "./Home";
 import loginPage from "./Login";
 import AllAdmins from "./AdminList";
-
 import RegisterPage from "./Register";
 import VenueSpecific from "./VenueDetails";
 

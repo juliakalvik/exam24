@@ -1,11 +1,16 @@
-import HomeHero from "../components/homeHero";
-import FetchVenues from "../components/venues";
+import React, { useState } from 'react';
+import HomeHero from '../components/homeHero';
+import FetchVenues from '../components/venues';
 
-export default function Home() {
+const App = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+
   return (
-    <>
-      <HomeHero />
-      <FetchVenues />
-    </>
+    <div>
+      <HomeHero searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+      <FetchVenues searchQuery={searchQuery} />
+    </div>
   );
-}
+};
+
+export default App;
