@@ -8,6 +8,7 @@ import loginPage from "./Login";
 import AllAdmins from "./AdminList";
 import RegisterPage from "./Register";
 import VenueSpecific from "./VenueDetails";
+import regularUserProfile from "./UserProfile";
 
 
 const rootRoute = new RootRoute({
@@ -58,6 +59,13 @@ const ownerProfileRoute = new Route({
 });
 
 
+const userProfileRoute = new Route({
+  getParentRoute: () => rootRoute,
+  path: "/userprofile",
+  component: regularUserProfile,
+});
+
+
 const routeTree = rootRoute.addChildren([
   indexRoute,
   ownerProfileRoute,
@@ -66,9 +74,8 @@ const routeTree = rootRoute.addChildren([
   adminsRoute,
   VenueDetailsRoute,
   registerRoute,
+  userProfileRoute,
 
-
-  
 ]);
 
 export const router = new Router({ routeTree });
