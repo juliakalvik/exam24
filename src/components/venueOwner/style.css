@@ -1,5 +1,6 @@
 
 
+/*VENUES*/
 
 .flex {
     display: flex;
@@ -19,7 +20,6 @@
     border-radius: 5px;
     
   }
-  
 
 
   .venueslistcard img {
@@ -35,7 +35,7 @@
   .venueslistcard button, .btn button {
     padding: 15px 30px;
     background-color: #5ACD51;
-    border-color: #632873;
+    border-color: #5ACD51;
     color: white;
     border: none;
     border-radius: 5px;
@@ -45,9 +45,7 @@
   }
   
   .venueslistcard button:hover {
-    background-color: white;
-    color:#632873;
-    border: 1px solid #632873;
+    background-color: black;
     
   }
   
@@ -68,3 +66,38 @@
  .deletebtn button {
     background-color: #D63636;
   }
+
+
+
+  /*PROFILE*/
+
+  .cardparent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid;
+    padding: 0px;
+    width: 400px;
+    height: 500px;
+    background-color: #e5e5e5;
+    gap: 30px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 5px grey;
+    
+    
+  }
+
+  .cardparent img {
+    border-radius: 1000px;
+    width: 200px;
+  }
+
+  .cardparent h4 {
+    margin-bottom: 0px;
+  }
+
+ .usercard {
+    display: flex;
+    justify-content: center;
+ }

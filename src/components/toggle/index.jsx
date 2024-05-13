@@ -9,8 +9,7 @@ const ToggleAdmin = () => {
         <h2>Admin dashboard</h2>
       </div>
       <div className="manage">
-        <h5>Manage:</h5>
-        <h5>Manage:</h5>
+        <h3>Manage:</h3>
       </div>
     <div className="toggle">
       <Link to="/hostprofile">
