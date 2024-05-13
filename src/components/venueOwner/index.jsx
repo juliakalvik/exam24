@@ -1,17 +1,18 @@
 import React from "react";
-
+import "./style.css";
+import ToggleAdmin from "../toggle";
 
 const OwnerProfile = () => {
   /* const { name } = useParams(); */
 
   return (
-    <div>
-      <h2>Owner Profile</h2>
-      <p>Username: Julis</p>
-    </div>
+    <>
+      
+      <ToggleAdmin />
+      
+      
+    </>
   );
 };
 
 export default OwnerProfile;
-
-

@@ -1,7 +1,7 @@
 import { Router, Route, RootRoute } from "@tanstack/react-router";
 
 import Root from "../App";
-import OwnerProfile from "./OwnerProfile";
+import OwnerProfile from "./HostProfile";
 import FetchVenues from "../components/venues";
 import Home from "./Home";
 import loginPage from "./Login";
@@ -9,6 +9,7 @@ import AllAdmins from "./AdminList";
 import RegisterPage from "./Register";
 import VenueSpecific from "./VenueDetails";
 import regularUserProfile from "./UserProfile";
+import manageVenues from "./ManageVenues";
 
 
 const rootRoute = new RootRoute({
@@ -54,8 +55,14 @@ const rootRoute = new RootRoute({
 
 const ownerProfileRoute = new Route({
   getParentRoute: () => rootRoute,
-  path: "/ownerprofile",
+  path: "/hostprofile",
   component: OwnerProfile,
+});
+
+const manageVenuesRoute = new Route({
+  getParentRoute: () => rootRoute,
+  path: "/managevenues",
+  component: manageVenues,
 });
 
 
@@ -75,6 +82,7 @@ const routeTree = rootRoute.addChildren([
   VenueDetailsRoute,
   registerRoute,
   userProfileRoute,
+  manageVenuesRoute,
 
 ]);
 

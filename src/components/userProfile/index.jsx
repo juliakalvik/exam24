@@ -8,7 +8,9 @@ const UserProfile = () => {
     listings: [],
     credits: 0,
   });
+  
   const userName = localStorage.getItem("name");
+  
 
   useEffect(() => {
     fetchData();
@@ -19,6 +21,15 @@ const UserProfile = () => {
     try {
       const data = await fetchProfileByName(userName);
       setProfile(data);
+
+      const getOptions = {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      const options = updateOptions(getOptions);
+      
       
       localStorage.setItem("avatar", data.avatar);
     } catch (error) {
@@ -29,6 +40,12 @@ const UserProfile = () => {
   return (
     <div>
       <h1>Welcome back, {userName}</h1>
+      <div className="userprofileinfo">
+        <p> Name: {userName}</p>
+        <p> Bio: {userName}</p>
+
+
+      </div>
       <h2> hi </h2>
       
     </div>

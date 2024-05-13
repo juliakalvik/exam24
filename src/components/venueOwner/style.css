@@ -1,0 +1,70 @@
+
+
+
+.flex {
+    display: flex;
+    justify-content: center;
+}
+
+
+  .venueslistcard {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    border: 1px solid;
+    border-color: #8d99ae;
+    padding: 20px;
+    border-radius: 5px;
+    
+  }
+  
+
+
+  .venueslistcard img {
+    width: 160px;
+  }
+
+  .venueslist {
+    width: 1200px;
+   
+    
+  }
+  
+  .venueslistcard button, .btn button {
+    padding: 15px 30px;
+    background-color: #5ACD51;
+    border-color: #632873;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+
+  }
+  
+  .venueslistcard button:hover {
+    background-color: white;
+    color:#632873;
+    border: 1px solid #632873;
+    
+  }
+  
+
+  .btn button {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 1rem;
+  }
+
+ .deletebtn button {
+    background-color: #D63636;
+  }

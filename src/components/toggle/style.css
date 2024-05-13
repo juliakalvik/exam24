@@ -1,0 +1,12 @@
+.toggle, .manage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 52px;
+}
+  
+.parent {
+    display: flex;
+    justify-content: center;
+    padding-top: 70px;
+}

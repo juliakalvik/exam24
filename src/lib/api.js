@@ -109,7 +109,7 @@ export async function loginUser({ email, password }) {
 }
 
 
-// Get profile information
+// Get profile information with the access token
 export async function fetchProfileByName(profileName) {
   const url = new URL(`https://v2.api.noroff.dev/holidaze/profiles/${profileName}`);
   const accessToken = localStorage.getItem("token");
@@ -134,5 +134,8 @@ export async function fetchProfileByName(profileName) {
     throw new Error(error);
   }
 }
+
+// Fetch single profile
+
 
 
