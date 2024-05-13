@@ -1,15 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style.css";
 import ToggleAdmin from "../toggle";
 
 const ManageVen = () => {
+  const [showForm, setShowForm] = useState(false);
+
+  const handleAddVenue = () => {
+    setShowForm(true);
+  };
+
+  const handleCloseForm = () => {
+    setShowForm(false);
+  };
+
   return (
     <>
       <ToggleAdmin />
       <div className="flex">
         <div className="venueslist">
           <div className="btn">
-            <button type="button">+ Add a new venue</button>
+            <button type="button" onClick={handleAddVenue}>
+              + Add a new venue
+            </button>
           </div>
           <div className="venueslistcard">
             <img
@@ -35,7 +47,7 @@ const ManageVen = () => {
             <h4>Name</h4>
             <p>Active bookings</p>
             <div className="buttons">
-            <button type="button"><i class="fa-regular fa-pen-to-square"></i>  Edit</button>
+              <button type="button"><i class="fa-regular fa-pen-to-square"></i>  Edit</button>
               <div className="deletebtn">
                 <button type="button">
                   <i class="fa-regular fa-trash-can"></i> Delete
@@ -51,7 +63,7 @@ const ManageVen = () => {
             <h4>Name</h4>
             <p>Active bookings</p>
             <div className="buttons">
-            <button type="button"><i class="fa-regular fa-pen-to-square"></i>  Edit</button>
+              <button type="button"><i class="fa-regular fa-pen-to-square"></i>  Edit</button>
               <div className="deletebtn">
                 <button type="button">
                   <i class="fa-regular fa-trash-can"></i> Delete
@@ -67,7 +79,7 @@ const ManageVen = () => {
             <h4>Name</h4>
             <p>Active bookings</p>
             <div className="buttons">
-            <button type="button"><i class="fa-regular fa-pen-to-square"></i>  Edit</button>
+              <button type="button"><i class="fa-regular fa-pen-to-square"></i>  Edit</button>
               <div className="deletebtn">
                 <button type="button">
                   <i class="fa-regular fa-trash-can"></i> Delete
@@ -77,6 +89,36 @@ const ManageVen = () => {
           </div>
         </div>
       </div>
+      {showForm && (
+        <div className="overlay">
+          <div className="form-container">
+            <span className="close-btn" onClick={handleCloseForm}>
+              &times;
+            </span>
+            <form>
+              <label htmlFor="name">Name:</label>
+              <input type="text" id="name" name="name" />
+
+              <label htmlFor="description">Description:</label>
+              <textarea id="description" name="description"></textarea>
+
+              <label htmlFor="media">Media:</label>
+              <input type="file" id="media" name="media" accept="image/*" />
+
+              <label htmlFor="price">Price:</label>
+              <input type="number" id="price" name="price" />
+
+              <label htmlFor="maxGuests">Max Guests:</label>
+              <input type="number" id="maxGuests" name="maxGuests" />
+
+              <label htmlFor="location">Location:</label>
+              <input type="text" id="location" name="location" />
+
+              <button type="submit">Submit</button>
+            </form>
+          </div>
+        </div>
+      )}
     </>
   );
 };
