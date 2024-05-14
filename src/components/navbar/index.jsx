@@ -13,7 +13,7 @@ export default function Nav() {
     <>
       <nav className="navbar">
         <div className="logo">
-          <Link to="/">HoliDaze </Link>
+          <Link to="/" className='logoname'>HoliDaze </Link>
           <p className='subtext'>...your life</p>
         </div>
         <div className={`nav-links ${isMenuOpen ? 'open' : ''}`}>

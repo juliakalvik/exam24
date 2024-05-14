@@ -33,7 +33,11 @@
     margin-left: 4vw;
   }
 
-
+.logo .logoname {
+  margin-top: 40px;
+  display: flex;
+  margin-left: 20px;
+}
 
   .nav-links {
     display: flex;
