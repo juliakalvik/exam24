@@ -10,7 +10,7 @@ const OwnerProfile = () => {
       
       <ToggleAdmin />
       <div className="usercard">
-        <div className="cardparent">
+        <div className="profilecardparent">
           <h4>Hi, username</h4>
           <p>Bio skal inn her tenkte jeg, heihei her er jeg.</p>
           <img

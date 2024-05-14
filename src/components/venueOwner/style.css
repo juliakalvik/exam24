@@ -71,7 +71,7 @@
 
   /*PROFILE*/
 
-  .cardparent {
+  .profilecardparent {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -88,12 +88,12 @@
     
   }
 
-  .cardparent img {
+  .profilecardparent img {
     border-radius: 1000px;
     width: 200px;
   }
 
-  .cardparent h4 {
+  .profilecardparent h4 {
     margin-bottom: 0px;
   }
 
