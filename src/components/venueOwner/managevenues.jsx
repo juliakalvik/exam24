@@ -31,7 +31,9 @@ const ManageVen = () => {
             <h4>Name</h4>
             <p>Active bookings</p>
             <div className="buttons">
-              <button type="button"><i class="fa-regular fa-pen-to-square"></i>  Edit</button>
+              <button type="button">
+                <i class="fa-regular fa-pen-to-square"></i> Edit
+              </button>
               <div className="deletebtn">
                 <button type="button">
                   <i class="fa-regular fa-trash-can"></i> Delete
@@ -47,7 +49,9 @@ const ManageVen = () => {
             <h4>Name</h4>
             <p>Active bookings</p>
             <div className="buttons">
-              <button type="button"><i class="fa-regular fa-pen-to-square"></i>  Edit</button>
+              <button type="button">
+                <i class="fa-regular fa-pen-to-square"></i> Edit
+              </button>
               <div className="deletebtn">
                 <button type="button">
                   <i class="fa-regular fa-trash-can"></i> Delete
@@ -63,7 +67,9 @@ const ManageVen = () => {
             <h4>Name</h4>
             <p>Active bookings</p>
             <div className="buttons">
-              <button type="button"><i class="fa-regular fa-pen-to-square"></i>  Edit</button>
+              <button type="button">
+                <i class="fa-regular fa-pen-to-square"></i> Edit
+              </button>
               <div className="deletebtn">
                 <button type="button">
                   <i class="fa-regular fa-trash-can"></i> Delete
@@ -79,7 +85,9 @@ const ManageVen = () => {
             <h4>Name</h4>
             <p>Active bookings</p>
             <div className="buttons">
-              <button type="button"><i class="fa-regular fa-pen-to-square"></i>  Edit</button>
+              <button type="button">
+                <i class="fa-regular fa-pen-to-square"></i> Edit
+              </button>
               <div className="deletebtn">
                 <button type="button">
                   <i class="fa-regular fa-trash-can"></i> Delete
@@ -90,32 +98,43 @@ const ManageVen = () => {
         </div>
       </div>
       {showForm && (
-        <div className="overlay">
-          <div className="form-container">
-            <span className="close-btn" onClick={handleCloseForm}>
-              &times;
-            </span>
-            <form>
-              <label htmlFor="name">Name:</label>
-              <input type="text" id="name" name="name" />
+        <div className="formparent">
+          <div className="overlay">
+            <div className="form-container">
+              <span className="close-btn" onClick={handleCloseForm}>
+                &times;
+              </span>
+              <form>
+                <label htmlFor="name">Name:</label>
+                <input type="text" id="name" name="name" />
 
-              <label htmlFor="description">Description:</label>
-              <textarea id="description" name="description"></textarea>
+                <label htmlFor="description">Description:</label>
+                <textarea id="description" name="description"></textarea>
 
-              <label htmlFor="media">Media:</label>
-              <input type="file" id="media" name="media" accept="image/*" />
+                <label htmlFor="media">Media:</label>
+                <input type="file" id="media" name="media" accept="image/*" />
 
-              <label htmlFor="price">Price:</label>
-              <input type="number" id="price" name="price" />
+                <label htmlFor="price">Price:</label>
+                <input type="number" id="price" name="price" />
 
-              <label htmlFor="maxGuests">Max Guests:</label>
-              <input type="number" id="maxGuests" name="maxGuests" />
+                <label htmlFor="maxGuests">Max Guests:</label>
+                <input type="number" id="maxGuests" name="maxGuests" />
 
-              <label htmlFor="location">Location:</label>
-              <input type="text" id="location" name="location" />
+                <label htmlFor="location">Location:</label>
+                <input type="text" id="location" name="location" />
 
-              <button type="submit">Submit</button>
-            </form>
+                <div className="button-group">
+                  <button type="submit">Submit</button>
+                  <button
+                    type="button"
+                    className="close-form"
+                    onClick={handleCloseForm}
+                  >
+                    Close
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       )}
