@@ -1,179 +1,235 @@
-
-
 /*VENUES*/
 
 .flex {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 
-  .venueslistcard {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    border: 1px solid;
-    border-color: #8d99ae;
-    padding: 20px;
-    border-radius: 5px;
-    
-  }
-
-
-  .venueslistcard img {
-    width: 160px;
-  }
-
-  .venueslist {
-    width: 1200px;
-   
-    
-  }
+.venueslistcard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  border: 1px solid;
+  border-color: #8d99ae;
+  padding: 20px;
+  border-radius: 5px;
   
-  .venueslistcard button, .btn button {
-    padding: 15px 30px;
-    background-color: #5ACD51;
-    border-color: #5ACD51;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
+}
 
-  }
 
-  .btn button:hover, .venueslistcard button:hover {
-    background-color: #45a049;
-  }
+.venueslistcard img {
+  width: 160px;
+}
+
+.venueslist {
+  width: 1200px;
+ 
   
+}
 
-  .btn button {
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: flex-end;
-  }
+.venueslistcard button, .btn button {
+  padding: 15px 30px;
+  background-color: #5ACD51;
+  border-color: #5ACD51;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
 
-  .buttons {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    gap: 1rem;
-  }
+}
 
- .deletebtn button {
-    background-color: #D63636;
-  }
-
-  .deletebtn button:hover, .button-group .close-form:hover {
-    background-color: #B82e2e;
-  }
+.btn button:hover, .venueslistcard button:hover {
+  background-color: #45a049;
+}
 
 
-  /*OVERLAY FORM*/
+.btn button {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 1rem;
+}
+
+.deletebtn button {
+  background-color: #D63636;
+}
+
+.deletebtn button:hover, .button-group .close-form:hover {
+  background-color: #B82e2e;
+}
 
 
- .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+/*OVERLAY FORM*/
+
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  padding: 40px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.form-container form {
+  display: grid;
+  gap: 10px;
+}
+
+.form-container label {
+  font-weight: bold;
+}
+
+.form-container input,
+.form-container textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-container button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form-container button:hover {
+  background-color: #45a049;
+}
+
+.button-group .close-form {
+  background-color: #D63636;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
+/*PROFILE*/
+
+.profilecardparent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  width: 400px;
+  height: 500px;
+  background-color: #F5E8DF;
+  gap: 30px;
+  border-radius: 10px;
+  box-shadow: 10px 10px 10px#CD8A54;
   
-  .form-container {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    max-width: 400px;
-    padding: 40px;
-  }
-
-  .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-  }
   
-  .form-container form {
-    display: grid;
-    gap: 10px;
-  }
-  
-  .form-container label {
-    font-weight: bold;
-  }
-  
-  .form-container input,
-  .form-container textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .form-container button {
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .form-container button:hover {
-    background-color: #45a049;
-  }
+}
 
-  .button-group .close-form {
-    background-color: #D63636;
-  }
+/*.profilecardparent img {
+  border-radius: 1000px;
+  width: 200px;
+  box-shadow: 0px 0px 15px rgba(205, 138, 84, 0.5);
+}
+*/
+.profilecardparent h4 {
+  margin-bottom: 0px;
+}
 
-  .button-group {
-    display: flex;
-    justify-content: space-between;
-  }
+.usercard {
+  display: flex;
+  justify-content: center;
+}
 
 
+.profile-edit {
+width: 300px;
+padding: 20px;
+border: 1px solid #ccc;
+border-radius: 5px;
+box-shadow: 0px 0px 15px rgba(205, 138, 84, 0.5);
+}
 
-  /*PROFILE*/
+.profile-edit h4 {
+margin-bottom: 10px;
+}
 
-  .profilecardparent {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid;
-    padding: 0px;
-    width: 400px;
-    height: 500px;
-    background-color: #e5e5e5;
-    gap: 30px;
-    border-radius: 10px;
-    box-shadow: 10px 10px 5px grey;
-    
-    
-  }
+.profile-edit form {
+display: flex;
+flex-direction: column;
+gap: 10px;
+}
 
-  .profilecardparent img {
-    border-radius: 1000px;
-    width: 200px;
-  }
+.profile-edit label {
+font-weight: bold;
+}
 
-  .profilecardparent h4 {
-    margin-bottom: 0px;
-  }
+.profile-edit input,
+.profile-edit textarea {
+width: 100%;
+padding: 8px;
+border: 1px solid #ccc;
+border-radius: 4px;
+}
 
- .usercard {
-    display: flex;
-    justify-content: center;
- }
+.profile-edit button {
+background-color: #4caf50;
+color: white;
+border: none;
+padding: 10px 20px;
+border-radius: 4px;
+cursor: pointer;
+}
 
+.profile-edit button:hover {
+background-color: #45a049;
+}
+
+
+.userheader {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 70px;
+  background-color: #F5E8DF;
+}
+
+.userheader img {
+  border-radius: 1000px;
+  width: 240px;
+  box-shadow: 0px 0px 15px rgba(205, 138, 84, 0.5)
+
+}
