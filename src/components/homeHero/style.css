@@ -1,15 +1,14 @@
-html, body {
+html,
+body {
   overflow-x: hidden;
   margin: 0;
   height: 100%;
-  
 }
-
 
 header {
   background-image: url("/hero.jpeg");
-  background-size: fill; 
-  background-position: center; 
+  background-size: fill;
+  background-position: center;
   background-color: #f0f0f0;
   padding: 20px;
   padding-top: 70px;
@@ -18,25 +17,87 @@ header {
   justify-content: center;
   align-items: center;
   height: 600px;
- 
 }
 
-h1, p {
-    color: #f0f0f0;
+h1,
+p {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
 }
+
+.herotext h1, .herotext p {
+  color: #555;
+}
+
+.herotext p {
+  margin-bottom: 100px;
+  margin-top: 0px;
+}
+
+.herotext h1 {
+  margin-bottom: 0;
+}
+
 
 .search-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
   margin-bottom: 10px;
 }
 
-.city-buttons {
-  display: flex;
+.search-bar input[type="text"] {
+  width: 300px;
+  padding: 10px;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  font-size: 12px;
+  outline: none;
+  padding-left: 35px; 
 }
 
-.city-buttons button {
+
+.fa-magnifying-glass {
+  position: absolute;
+  left: 10px; 
+  top: 50%;
+  transform: translateY(-50%);
+  color: #555;
+}
+
+
+.buttonssection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 20px;
+  gap: 20px;
+}
+
+.buttonssection p {
+  margin: 0;
+}
+
+
+.city-buttons button,
+.search-bar input {
   margin-right: 10px;
-  border: 1px solid #333;
+  border: 2px solid #fff;
   padding: 5px 10px;
   background-color: #fff;
   cursor: pointer;
+  border-radius: 5px;
+  font-size: 12px;
+  box-shadow: 0px 0px 15px rgba(89, 164, 178, 0.5);
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
 }
+
+.buttonssection .popular {
+  color: white;
+  background-color: black;
+}
+
