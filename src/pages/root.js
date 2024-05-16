@@ -10,6 +10,7 @@ import RegisterPage from "./Register";
 import VenueSpecific from "./VenueDetails";
 import regularUserProfile from "./UserProfile";
 import manageVenues from "./ManageVenues";
+import ProfilesList from "./Profiles";
 
 
 const rootRoute = new RootRoute({
@@ -66,11 +67,20 @@ const manageVenuesRoute = new Route({
 });
 
 
+
+
 const userProfileRoute = new Route({
   getParentRoute: () => rootRoute,
   path: "/userprofile",
   component: regularUserProfile,
 });
+
+const fetchProfilesRoute = new Route({
+  getParentRoute: () => rootRoute,
+  path: "/profiles",
+  component: ProfilesList,
+});
+
 
 
 const routeTree = rootRoute.addChildren([
@@ -83,6 +93,7 @@ const routeTree = rootRoute.addChildren([
   registerRoute,
   userProfileRoute,
   manageVenuesRoute,
+  fetchProfilesRoute,
 
 ]);
 

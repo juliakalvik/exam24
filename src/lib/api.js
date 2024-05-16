@@ -1,6 +1,5 @@
 import { API_URL } from "./constants";
 
-
 //* Auth / create API key:
 
 const createAPIKey = async () => {
@@ -10,8 +9,8 @@ const createAPIKey = async () => {
     method: "POST",
     headers: {
       authorization: `Bearer ${accessToken}`,
-      name : localStorage.getItem("name")
-    } 
+      name: localStorage.getItem("name"),
+    },
   };
 
   try {
@@ -22,15 +21,13 @@ const createAPIKey = async () => {
     const apiKeyData = await response.json();
     const apiKey = apiKeyData.data.key;
     localStorage.setItem("apiKey", apiKey);
-    
   } catch (error) {
     console.error("Error creating API key:", error);
     return null;
   }
 };
 
-
-createAPIKey()
+createAPIKey();
 
 //* Specific venue:
 
@@ -52,7 +49,6 @@ export async function fetchVenueById(venueId) {
 
 //* Register:
 
-
 export async function registerUser({ email, password, username, avatar }) {
   const url = new URL(`https://v2.api.noroff.dev/auth/register`);
 
@@ -60,7 +56,7 @@ export async function registerUser({ email, password, username, avatar }) {
     name: username,
     email,
     password,
-    avatar: { url: avatar }, 
+    avatar: { url: avatar },
   };
 
   const options = {
@@ -79,7 +75,6 @@ export async function registerUser({ email, password, username, avatar }) {
   }
 }
 
-
 //* Login:
 
 export async function loginUser({ email, password }) {
@@ -97,7 +92,7 @@ export async function loginUser({ email, password }) {
 
     if (!response.ok) throw new Error(response.statusText);
 
-    const {data} = await response.json();
+    const { data } = await response.json();
     localStorage.setItem("token", data.accessToken);
     localStorage.setItem("name", data.name);
     localStorage.setItem("email", data.email);
@@ -108,10 +103,11 @@ export async function loginUser({ email, password }) {
   }
 }
 
-
 // Get profile information with the access token
 export async function fetchProfileByName(profileName) {
-  const url = new URL(`https://v2.api.noroff.dev/holidaze/profiles/${profileName}`);
+  const url = new URL(
+    `https://v2.api.noroff.dev/holidaze/profiles/${profileName}`
+  );
   const accessToken = localStorage.getItem("token");
   const apiKey = localStorage.getItem("apiKey");
   const options = {
@@ -119,10 +115,9 @@ export async function fetchProfileByName(profileName) {
     headers: {
       authorization: `Bearer ${accessToken}`,
       "Content-Type": "application/json",
-      "X-Noroff-API-Key": apiKey
-    } 
+      "X-Noroff-API-Key": apiKey,
+    },
   };
-  
 
   try {
     const response = await fetch(url.href, options);
@@ -134,8 +129,4 @@ export async function fetchProfileByName(profileName) {
     throw new Error(error);
   }
 }
-
-// Fetch single profile
-
-
 
