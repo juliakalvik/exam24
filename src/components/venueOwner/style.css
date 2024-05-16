@@ -2,7 +2,8 @@
 
 .flex {
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+
 }
 
 
@@ -26,6 +27,7 @@
 
 .venueslist {
   width: 1200px;
+  padding-top: 120px;
  
   
 }
@@ -46,6 +48,13 @@
   background-color: #45a049;
 }
 
+.btn {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  align-items: center;
+  justify-content: space-between;
+}
 
 .btn button {
   margin-bottom: 20px;
@@ -152,20 +161,23 @@
   padding: 0px;
   width: 400px;
   height: 500px;
-  background-color: #F5E8DF;
+  background-color: #009DD8;
   gap: 30px;
   border-radius: 10px;
-  box-shadow: 10px 10px 10px#CD8A54;
-  
-  
+  box-shadow: 10px 10px 10px#00ABEB;
+  color:white;
 }
 
-/*.profilecardparent img {
+.profilecardparent p {
+  color: white;
+}
+
+.profilecardparent img {
   border-radius: 1000px;
   width: 200px;
   box-shadow: 0px 0px 15px rgba(205, 138, 84, 0.5);
 }
-*/
+
 .profilecardparent h4 {
   margin-bottom: 0px;
 }
@@ -220,16 +232,4 @@ background-color: #45a049;
 }
 
 
-.userheader {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 70px;
-  background-color: #F5E8DF;
-}
 
-.userheader img {
-  border-radius: 1000px;
-  width: 240px;
-  box-shadow: 0px 0px 15px rgba(205, 138, 84, 0.5)
-
-}

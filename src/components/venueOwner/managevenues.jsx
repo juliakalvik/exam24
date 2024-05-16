@@ -15,13 +15,15 @@ const ManageVen = () => {
 
   return (
     <>
-      <ToggleAdmin />
+      
       <div className="flex">
+      <ToggleAdmin />
         <div className="venueslist">
           <div className="btn">
             <button type="button" onClick={handleAddVenue}>
               + Add a new venue
             </button>
+            <h2>Admin dashboard</h2>
           </div>
           <div className="venueslistcard">
             <img

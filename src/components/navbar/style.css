@@ -7,8 +7,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 20px 20px 10px;
+  padding: 10px 20px 20px 10px;
   color: white;
+  background-color: #009DD8;
+  
 }
   
   .logo a, .logo p {

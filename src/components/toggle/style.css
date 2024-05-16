@@ -1,12 +1,25 @@
-.toggle, .manage {
+ .manage {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 52px;
+    gap: 5px;
+    flex-direction: column;
+    margin-left: 30px;
+    width: 200px;
+   
+}
+
+.toggle a {
+    text-decoration: none;
+    color: black;
+    border: 2px solid black;
 }
   
 .parent {
     display: flex;
     justify-content: center;
-    padding-top: 70px;
+    padding-top: 90px;
+    flex-direction: column;
+    
+    
+    
 }
+
