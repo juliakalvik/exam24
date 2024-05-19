@@ -7,6 +7,9 @@ import { useState,useEffect } from "react";
 const OwnerProfile = () => {
   const [profile, setProfile] = useState([]);
 
+  const placeholderImg = "https://images.unsplash.com/photo-1628563694622-5a76957fd09c?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW5zdGFncmFtJTIwcHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3Dhttps://images.unsplash.com/photo-1628563694622-5a76957fd09c?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW5zdGFncmFtJTIwcHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D";
+  const imageUrl = profile?.avatar?.url?.length > 0 ? profile?.avatar?.url : placeholderImg;
+
   /* const { name } = useParams(); */
   useEffect(() => {
     const fetchData = async () => {
@@ -40,7 +43,8 @@ const OwnerProfile = () => {
   return (
     <>
       <ToggleAdmin />
-          <img src={profile.avatar?.url}/>
+      
+      <img src={imageUrl} alt="Profile Avatar" />
       <div className="usercard">
         <div className="profilecardparent">
           <h4>Hi, {profile.name}</h4>
