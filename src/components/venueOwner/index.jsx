@@ -40,13 +40,11 @@ const OwnerProfile = () => {
   return (
     <>
       <ToggleAdmin />
+          <img src={profile.avatar?.url}/>
       <div className="usercard">
         <div className="profilecardparent">
-          <img
-            src="https://www.brit.co/media-library/jennifer-aniston-rachel-green-friends.jpg?id=35237685&width=600&height=600&quality=90&coordinates=0%2C0%2C0%2C3"
-            alt="A sample image"
-          />
           <h4>Hi, {profile.name}</h4>
+          <p>My venues: {profile?._count?.venues}</p>
           <p>Bio: {profile.bio}</p>
           <p>Email: {profile.email}</p>
           <p>My bookings: {profile._count?._bookings}</p>

@@ -155,3 +155,30 @@ export async function createNewVenue(newVenue) {
     throw new Error(error);
   }
 }
+
+
+// Update a profile:
+
+export async function updateProfile(putProfile) {
+  const url = new URL(`https://v2.api.noroff.dev/holidaze/profiles${profileName}`);
+  const accessToken = localStorage.getItem("token");
+  const apiKey = localStorage.getItem("apiKey");
+
+  let options = {
+    method: "PUT",
+    headers: {
+      authorization: `Bearer ${accessToken}`,
+      "Content-Type": "application/json",
+      "X-Noroff-API-Key": apiKey,
+    },
+    body: JSON.stringify(putProfile),
+  };
+
+
+  try {
+    const response = await fetch(url, options);
+    if (response.ok) return response.json();
+  } catch (error) {
+    throw new Error(error);
+  }
+}
