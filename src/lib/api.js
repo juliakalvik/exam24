@@ -130,3 +130,28 @@ export async function fetchProfileByName(profileName) {
   }
 }
 
+// POST/create new venue:
+
+export async function createNewVenue(newVenue) {
+  const url = new URL(`https://v2.api.noroff.dev/holidaze/venues`);
+  const accessToken = localStorage.getItem("token");
+  const apiKey = localStorage.getItem("apiKey");
+
+  let options = {
+    method: "POST",
+    headers: {
+      authorization: `Bearer ${accessToken}`,
+      "Content-Type": "application/json",
+      "X-Noroff-API-Key": apiKey,
+    },
+    body: JSON.stringify(newVenue),
+  };
+
+
+  try {
+    const response = await fetch(url, options);
+    if (response.ok) return response.json();
+  } catch (error) {
+    throw new Error(error);
+  }
+}

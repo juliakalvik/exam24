@@ -49,7 +49,7 @@ const OwnerProfile = () => {
           <h4>Hi, {profile.name}</h4>
           <p>Bio: {profile.bio}</p>
           <p>Email: {profile.email}</p>
-          <p>My bookings: {profile._count.bookings}</p>
+          <p>My bookings: {profile._count?._bookings}</p>
           <p className="role">Role: {profile.venueManager? "Host":"Guest"  } </p>
         </div>
         <div className="profile-edit">

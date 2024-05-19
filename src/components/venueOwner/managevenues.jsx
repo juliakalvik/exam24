@@ -1,9 +1,61 @@
 import React, { useState } from "react";
 import "./style.css";
 import ToggleAdmin from "../toggle";
+import { createNewVenue } from "../../lib/api";
+import { useNavigate } from "@tanstack/react-router";
+import { useEffect } from "react";
+import { useForm } from "react-hook-form";
 
 const ManageVen = () => {
   const [showForm, setShowForm] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  function onSubmit(data) {
+    console.log(data);
+    createNewVenue(data) 
+
+  } 
+
+  /*function NewVenue() {
+  const navigate = useNavigate();
+ 
+}
+*/
+  const [mediaPreview, setMediaPreview] = useState("");
+
+
+
+  /*const createVenue = async (e) => {
+    e.preventDefault();
+    console.log(e);
+
+    const requiredFields = ["name", "description", "price", "maxGuests"];
+    const newErrors = {};
+    requiredFields.forEach((field) => {
+      if (!formData[field]) {
+        newErrors[field] = `Please enter ${field}.`;
+      }
+    });
+    try {
+      const postData = {
+        ...formData,
+        media: formData.media.split(",").map((item) => item.trim()),
+      };
+
+      const response = await postNewVenue(postData);
+
+      // If response have id, it was a success.
+      navigate({
+        to: "/listingdetails?productId=" + response.id,
+      });
+    } catch (error) {
+      console.log(error);
+      console.error("Error during registration:");
+    }
+  };*/
 
   const handleAddVenue = () => {
     setShowForm(true);
@@ -15,9 +67,8 @@ const ManageVen = () => {
 
   return (
     <>
-      
       <div className="flex">
-      <ToggleAdmin />
+        <ToggleAdmin />
         <div className="venueslist">
           <div className="btn">
             <button type="button" onClick={handleAddVenue}>
@@ -34,11 +85,11 @@ const ManageVen = () => {
             <p>Active bookings</p>
             <div className="buttons">
               <button type="button">
-                <i class="fa-regular fa-pen-to-square"></i> Edit
+                <i className="fa-regular fa-pen-to-square"></i> Edit
               </button>
               <div className="deletebtn">
                 <button type="button">
-                  <i class="fa-regular fa-trash-can"></i> Delete
+                  <i className="fa-regular fa-trash-can"></i> Delete
                 </button>
               </div>
             </div>
@@ -52,11 +103,11 @@ const ManageVen = () => {
             <p>Active bookings</p>
             <div className="buttons">
               <button type="button">
-                <i class="fa-regular fa-pen-to-square"></i> Edit
+                <i className="fa-regular fa-pen-to-square"></i> Edit
               </button>
               <div className="deletebtn">
                 <button type="button">
-                  <i class="fa-regular fa-trash-can"></i> Delete
+                  <i className="fa-regular fa-trash-can"></i> Delete
                 </button>
               </div>
             </div>
@@ -70,11 +121,11 @@ const ManageVen = () => {
             <p>Active bookings</p>
             <div className="buttons">
               <button type="button">
-                <i class="fa-regular fa-pen-to-square"></i> Edit
+                <i className="fa-regular fa-pen-to-square"></i> Edit
               </button>
               <div className="deletebtn">
                 <button type="button">
-                  <i class="fa-regular fa-trash-can"></i> Delete
+                  <i className="fa-regular fa-trash-can"></i> Delete
                 </button>
               </div>
             </div>
@@ -88,11 +139,11 @@ const ManageVen = () => {
             <p>Active bookings</p>
             <div className="buttons">
               <button type="button">
-                <i class="fa-regular fa-pen-to-square"></i> Edit
+                <i className="fa-regular fa-pen-to-square"></i> Edit
               </button>
               <div className="deletebtn">
                 <button type="button">
-                  <i class="fa-regular fa-trash-can"></i> Delete
+                  <i className="fa-regular fa-trash-can"></i> Delete
                 </button>
               </div>
             </div>
@@ -106,35 +157,39 @@ const ManageVen = () => {
               <span className="close-btn" onClick={handleCloseForm}>
                 &times;
               </span>
-              <form>
-                <label htmlFor="name">Name:</label>
-                <input type="text" id="name" name="name" />
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <input
+                  type="text"
+                  placeholder="Venue title"
+                  {...register("name", { required: true, min: 2 })}
+                />
+                <input
+                  type="text"
+                  placeholder="Description"
+                  {...register("description", { required: true })}
+                />
+                <input
+                  type="url"
+                  placeholder="Media URL"
+                  {...register("media[0].url", {})}
+                />
+                <input
+                  type="number"
+                  placeholder="Price"
+                  {...register("price", { setValueAs: v => parseInt(v), required: true })} 
+                />
+                <input
+                  type="number"
+                  placeholder="Max guests"
+                  {...register("maxGuests", { setValueAs: v => parseInt(v), required: true })}
+                />
+                <input
+                  type="text"
+                  placeholder="City"
+                  {...register("location.city", {})}
+                />
 
-                <label htmlFor="description">Description:</label>
-                <textarea id="description" name="description"></textarea>
-
-                <label htmlFor="media">Media:</label>
-                <input type="file" id="media" name="media" accept="image/*" />
-
-                <label htmlFor="price">Price:</label>
-                <input type="number" id="price" name="price" />
-
-                <label htmlFor="maxGuests">Max Guests:</label>
-                <input type="number" id="maxGuests" name="maxGuests" />
-
-                <label htmlFor="location">Location:</label>
-                <input type="text" id="location" name="location" />
-
-                <div className="button-group">
-                  <button type="submit">Submit</button>
-                  <button
-                    type="button"
-                    className="close-form"
-                    onClick={handleCloseForm}
-                  >
-                    Close
-                  </button>
-                </div>
+                <input type="submit" />
               </form>
             </div>
           </div>
