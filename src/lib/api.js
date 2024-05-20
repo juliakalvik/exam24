@@ -236,3 +236,42 @@ export async function updateVenue(venueId, putVenue) {
     throw new Error(error);
   }
 }
+
+
+
+//Delete a venue:
+
+// api.js
+
+export async function deleteVenue(venueId) {
+  const url = new URL(`https://v2.api.noroff.dev/holidaze/venues/${venueId}`);
+  const accessToken = localStorage.getItem("token");
+  const apiKey = localStorage.getItem("apiKey");
+
+  let options = {
+    method: "DELETE",
+    headers: {
+      authorization: `Bearer ${accessToken}`,
+      "Content-Type": "application/json",
+      "X-Noroff-API-Key": apiKey,
+    },
+  };
+
+  try {
+    const response = await fetch(url, options);
+    if (response.ok) {
+      
+      const responseBody = await response.text();
+      if (responseBody) {
+        return JSON.parse(responseBody);
+      } else {
+       
+        return null; 
+      }
+    } else {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+  } catch (error) {
+    throw new Error(error);
+  }
+}

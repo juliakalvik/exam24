@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
 import ToggleAdmin from "../toggle";
-import { createNewVenue, updateVenue } from "../../lib/api";
+import { createNewVenue, updateVenue, deleteVenue } from "../../lib/api";
 import { useForm } from "react-hook-form";
 
 const ManageVen = () => {
@@ -10,6 +10,8 @@ const ManageVen = () => {
   const [editMode, setEditMode] = useState(false);
   const [currentVenue, setCurrentVenue] = useState(null);
   const [error, setError] = useState(null);
+  
+
 
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
@@ -90,6 +92,17 @@ const ManageVen = () => {
     setShowForm(true);
   };
 
+  const handleDeleteVenue = (venueId) => {
+    deleteVenue(venueId)
+      .then(() => {
+        setProfileVenues((prevVenues) =>
+          prevVenues.filter((venue) => venue.id !== venueId)
+        );
+      })
+      .catch((error) => console.error("Error deleting venue:", error));
+  };
+  
+
   return (
     <>
       <div className="flex">
@@ -115,7 +128,7 @@ const ManageVen = () => {
                       <i className="fa-regular fa-pen-to-square"></i> Edit
                     </button>
                     <div className="deletebtn">
-                      <button type="button">
+                    <button type="button" onClick={() => handleDeleteVenue(venue.id)}>
                         <i className="fa-regular fa-trash-can"></i> Delete
                       </button>
                     </div>
