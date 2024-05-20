@@ -1,61 +1,61 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
 import ToggleAdmin from "../toggle";
 import { createNewVenue } from "../../lib/api";
-import { useNavigate } from "@tanstack/react-router";
-import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 const ManageVen = () => {
   const [showForm, setShowForm] = useState(false);
+  const [profileVenues, setProfileVenues] = useState([]);
+  const [error, setError] = useState(null);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
   function onSubmit(data) {
-    console.log(data);
-    createNewVenue(data) 
+    createNewVenue(data);
+  }
 
-  } 
+  useEffect(() => {
+    const getVenuesByProfile = async (profileName) => {
+      const url = new URL(
+        `https://v2.api.noroff.dev/holidaze/profiles/${profileName}/venues`
+      );
+      const accessToken = localStorage.getItem("token");
+      const apiKey = localStorage.getItem("apiKey");
 
-  /*function NewVenue() {
-  const navigate = useNavigate();
- 
-}
-*/
-  const [mediaPreview, setMediaPreview] = useState("");
-
-
-
-  /*const createVenue = async (e) => {
-    e.preventDefault();
-    console.log(e);
-
-    const requiredFields = ["name", "description", "price", "maxGuests"];
-    const newErrors = {};
-    requiredFields.forEach((field) => {
-      if (!formData[field]) {
-        newErrors[field] = `Please enter ${field}.`;
-      }
-    });
-    try {
-      const postData = {
-        ...formData,
-        media: formData.media.split(",").map((item) => item.trim()),
+      let options = {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${accessToken}`,
+          "Content-Type": "application/json",
+          "X-Noroff-API-Key": apiKey,
+        },
       };
 
-      const response = await postNewVenue(postData);
+      try {
+        const response = await fetch(url, options);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setProfileVenues(data.data);
+      } catch (error) {
+        console.error("Error fetching venues:", error);
+        setError(error.message);
+      }
+    };
 
-      // If response have id, it was a success.
-      navigate({
-        to: "/listingdetails?productId=" + response.id,
-      });
-    } catch (error) {
-      console.log(error);
-      console.error("Error during registration:");
+    const profileName = localStorage.getItem("name");
+    if (profileName) {
+      getVenuesByProfile(profileName);
+    } else {
+      setError("Profile name not found in localStorage");
     }
-  };*/
+  }, []);
 
   const handleAddVenue = () => {
     setShowForm(true);
@@ -76,78 +76,29 @@ const ManageVen = () => {
             </button>
             <h2>Admin dashboard</h2>
           </div>
-          <div className="venueslistcard">
-            <img
-              src="https://images.unsplash.com/photo-1521334726092-b509a19597c6?q=80&w=3301&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="A sample image"
-            />
-            <h4>Name</h4>
-            <p>Active bookings</p>
-            <div className="buttons">
-              <button type="button">
-                <i className="fa-regular fa-pen-to-square"></i> Edit
-              </button>
-              <div className="deletebtn">
-                <button type="button">
-                  <i className="fa-regular fa-trash-can"></i> Delete
-                </button>
-              </div>
+          {error && <div>Error: {error}</div>}
+          {!profileVenues.length && !error && <div>Loading...</div>}
+          {profileVenues.length > 0 && (
+            <div>
+              {profileVenues.map((venue) => (
+                <div key={venue.id} className="venueslistcard">
+                  <img src={venue.media[0].url} alt={venue.media[0].alt || venue.name} />
+                  <h4>{venue.name}</h4>
+                  <p>Active bookings: {venue._count.bookings}</p>
+                  <div className="buttons">
+                    <button type="button">
+                      <i className="fa-regular fa-pen-to-square"></i> Edit
+                    </button>
+                    <div className="deletebtn">
+                      <button type="button">
+                        <i className="fa-regular fa-trash-can"></i> Delete
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
-          </div>
-          <div className="venueslistcard">
-            <img
-              src="https://images.unsplash.com/photo-1521334726092-b509a19597c6?q=80&w=3301&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="A sample image"
-            />
-            <h4>Name</h4>
-            <p>Active bookings</p>
-            <div className="buttons">
-              <button type="button">
-                <i className="fa-regular fa-pen-to-square"></i> Edit
-              </button>
-              <div className="deletebtn">
-                <button type="button">
-                  <i className="fa-regular fa-trash-can"></i> Delete
-                </button>
-              </div>
-            </div>
-          </div>
-          <div className="venueslistcard">
-            <img
-              src="https://images.unsplash.com/photo-1521334726092-b509a19597c6?q=80&w=3301&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="A sample image"
-            />
-            <h4>Name</h4>
-            <p>Active bookings</p>
-            <div className="buttons">
-              <button type="button">
-                <i className="fa-regular fa-pen-to-square"></i> Edit
-              </button>
-              <div className="deletebtn">
-                <button type="button">
-                  <i className="fa-regular fa-trash-can"></i> Delete
-                </button>
-              </div>
-            </div>
-          </div>
-          <div className="venueslistcard">
-            <img
-              src="https://images.unsplash.com/photo-1521334726092-b509a19597c6?q=80&w=3301&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="A sample image"
-            />
-            <h4>Name</h4>
-            <p>Active bookings</p>
-            <div className="buttons">
-              <button type="button">
-                <i className="fa-regular fa-pen-to-square"></i> Edit
-              </button>
-              <div className="deletebtn">
-                <button type="button">
-                  <i className="fa-regular fa-trash-can"></i> Delete
-                </button>
-              </div>
-            </div>
-          </div>
+          )}
         </div>
       </div>
       {showForm && (
@@ -176,12 +127,18 @@ const ManageVen = () => {
                 <input
                   type="number"
                   placeholder="Price"
-                  {...register("price", { setValueAs: v => parseInt(v), required: true })} 
+                  {...register("price", {
+                    setValueAs: (v) => parseInt(v),
+                    required: true,
+                  })}
                 />
                 <input
                   type="number"
                   placeholder="Max guests"
-                  {...register("maxGuests", { setValueAs: v => parseInt(v), required: true })}
+                  {...register("maxGuests", {
+                    setValueAs: (v) => parseInt(v),
+                    required: true,
+                  })}
                 />
                 <input
                   type="text"
