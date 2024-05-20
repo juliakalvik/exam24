@@ -184,6 +184,8 @@ export async function updateProfile(putProfile) {
 }
 
 
+//All venues by profile:
+
 
 export async function venuesByProfile(hest) {
   const url = new URL(`https://v2.api.noroff.dev/holidaze/profiles/${hest}/venues`);
@@ -197,6 +199,33 @@ export async function venuesByProfile(hest) {
       "Content-Type": "application/json",
       "X-Noroff-API-Key": apiKey,
     }
+  };
+
+
+  try {
+    const response = await fetch(url, options);
+    if (response.ok) return response.json();
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+
+//Update a venue:
+
+export async function updateVenue(venueId, putVenue) {
+  const url = new URL(`https://v2.api.noroff.dev/holidaze/venues/${venueId}`);
+  const accessToken = localStorage.getItem("token");
+  const apiKey = localStorage.getItem("apiKey");
+
+  let options = {
+    method: "PUT",
+    headers: {
+      authorization: `Bearer ${accessToken}`,
+      "Content-Type": "application/json",
+      "X-Noroff-API-Key": apiKey,
+    },
+    body: JSON.stringify(putVenue),
   };
 
 

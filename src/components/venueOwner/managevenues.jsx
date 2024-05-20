@@ -1,22 +1,38 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
 import ToggleAdmin from "../toggle";
-import { createNewVenue } from "../../lib/api";
+import { createNewVenue, updateVenue } from "../../lib/api";
 import { useForm } from "react-hook-form";
 
 const ManageVen = () => {
   const [showForm, setShowForm] = useState(false);
   const [profileVenues, setProfileVenues] = useState([]);
+  const [editMode, setEditMode] = useState(false);
+  const [currentVenue, setCurrentVenue] = useState(null);
   const [error, setError] = useState(null);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
   function onSubmit(data) {
-    createNewVenue(data);
+    if (editMode) {
+      updateVenue(currentVenue.id, data)
+        .then((updatedVenue) => {
+          setProfileVenues((prevVenues) =>
+            prevVenues.map((venue) =>
+              venue.id === currentVenue.id ? updatedVenue : venue
+            )
+          );
+          setEditMode(false);
+          setCurrentVenue(null);
+        })
+        .catch((error) => console.error("Error updating venue:", error));
+    } else {
+      createNewVenue(data)
+        .then((newVenue) => setProfileVenues((prevVenues) => [...prevVenues, newVenue]))
+        .catch((error) => console.error("Error creating venue:", error));
+    }
+    setShowForm(false);
+    reset();
   }
 
   useEffect(() => {
@@ -42,7 +58,7 @@ const ManageVen = () => {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        setProfileVenues(data.data);
+        setProfileVenues(data.data); 
       } catch (error) {
         console.error("Error fetching venues:", error);
         setError(error.message);
@@ -63,6 +79,15 @@ const ManageVen = () => {
 
   const handleCloseForm = () => {
     setShowForm(false);
+    setEditMode(false);
+    setCurrentVenue(null);
+    reset();
+  };
+
+  const handleEditVenue = (venue) => {
+    setCurrentVenue(venue);
+    setEditMode(true);
+    setShowForm(true);
   };
 
   return (
@@ -83,10 +108,10 @@ const ManageVen = () => {
               {profileVenues.map((venue) => (
                 <div key={venue.id} className="venueslistcard">
                   <img src={venue.media[0].url} alt={venue.media[0].alt || venue.name} />
-                  <h4>{venue.name}</h4>
+                  <h4>Name: {venue.name}</h4>
                   <p>Active bookings: {venue._count.bookings}</p>
                   <div className="buttons">
-                    <button type="button">
+                    <button type="button" onClick={() => handleEditVenue(venue)}>
                       <i className="fa-regular fa-pen-to-square"></i> Edit
                     </button>
                     <div className="deletebtn">
@@ -101,7 +126,7 @@ const ManageVen = () => {
           )}
         </div>
       </div>
-      {showForm && (
+      {(showForm || editMode) && (
         <div className="formparent">
           <div className="overlay">
             <div className="form-container">
@@ -112,21 +137,25 @@ const ManageVen = () => {
                 <input
                   type="text"
                   placeholder="Venue title"
-                  {...register("name", { required: true, min: 2 })}
+                  defaultValue={currentVenue?.name || ""}
+                  {...register("name", { required: true, minLength: 2 })}
                 />
                 <input
                   type="text"
                   placeholder="Description"
+                  defaultValue={currentVenue?.description || ""}
                   {...register("description", { required: true })}
                 />
                 <input
                   type="url"
                   placeholder="Media URL"
+                  defaultValue={currentVenue?.media[0]?.url || ""}
                   {...register("media[0].url", {})}
                 />
                 <input
                   type="number"
                   placeholder="Price"
+                  defaultValue={currentVenue?.price || ""}
                   {...register("price", {
                     setValueAs: (v) => parseInt(v),
                     required: true,
@@ -135,6 +164,7 @@ const ManageVen = () => {
                 <input
                   type="number"
                   placeholder="Max guests"
+                  defaultValue={currentVenue?.maxGuests || ""}
                   {...register("maxGuests", {
                     setValueAs: (v) => parseInt(v),
                     required: true,
@@ -143,9 +173,9 @@ const ManageVen = () => {
                 <input
                   type="text"
                   placeholder="City"
+                  defaultValue={currentVenue?.location?.city || ""}
                   {...register("location.city", {})}
                 />
-
                 <input type="submit" />
               </form>
             </div>
