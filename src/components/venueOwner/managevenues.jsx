@@ -121,7 +121,7 @@ const ManageVen = () => {
               {profileVenues.map((venue) => (
                 <div key={venue.id} className="venueslistcard">
                   <img src={venue.media[0].url} alt={venue.media[0].alt || venue.name} />
-                  <h4>Name: {venue.name}</h4>
+                  <h4>{venue.name}</h4>
                   <p>Active bookings: {venue._count.bookings}</p>
                   <div className="buttons">
                     <button type="button" onClick={() => handleEditVenue(venue)}>

@@ -160,11 +160,12 @@ export async function createNewVenue(newVenue) {
 // Update a profile:
 
 export async function updateProfile(putProfile) {
-  const url = new URL(`https://v2.api.noroff.dev/holidaze/profiles${profileName}`);
+  const profileName = localStorage.getItem("name");
+  const url = `https://v2.api.noroff.dev/holidaze/profiles/${profileName}`;
   const accessToken = localStorage.getItem("token");
   const apiKey = localStorage.getItem("apiKey");
 
-  let options = {
+  const options = {
     method: "PUT",
     headers: {
       authorization: `Bearer ${accessToken}`,
@@ -174,14 +175,17 @@ export async function updateProfile(putProfile) {
     body: JSON.stringify(putProfile),
   };
 
-
   try {
     const response = await fetch(url, options);
-    if (response.ok) return response.json();
+    if (!response.ok) {
+      throw new Error(`Failed to update profile: ${response.statusText}`);
+    }
+    return await response.json();
   } catch (error) {
     throw new Error(error);
   }
 }
+
 
 
 //All venues by profile:
@@ -241,7 +245,6 @@ export async function updateVenue(venueId, putVenue) {
 
 //Delete a venue:
 
-// api.js
 
 export async function deleteVenue(venueId) {
   const url = new URL(`https://v2.api.noroff.dev/holidaze/venues/${venueId}`);

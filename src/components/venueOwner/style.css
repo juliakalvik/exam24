@@ -1,11 +1,130 @@
-/*VENUES*/
-
-.flex {
+.ownerprofile-container {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 70px; 
+}
+
+.ownerprofile {
+  flex: 1;
+  padding-top: 100px;
+}
+
+.ownerprofile-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20px;
+  border: 1px solid #8d99ae;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.ownerprofile-avatar {
+  width: 300px;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+
+.ownerprofile-avatar img {
+  object-fit: fill;
+}
+
+.ownerprofile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ownerprofile-header-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.save-changes-btn {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.save-changes-btn:hover {
+  background-color: #45a049;
+}
+
+.ownerprofile-info form {
+  display: grid;
+  gap: 20px;
+}
+
+.ownerprofile-info label {
+  font-weight: bold;
+}
+
+.ownerprofile-info input,
+.ownerprofile-info textarea, .ownerprofile-sidebar input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.ownerprofile-info input:focus, .ownerprofile-info textarea:focus, .ownerprofile-sidebar input:focus{
+  border-color: #4caf50;
+  outline: none;
+}
+
+.ownerprofile-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ownerprofile-stats p {
+  margin: 0;
+}
+
+.ownerprofile-sidebar {
+  display: flex;
+  flex-direction: column;
+  padding-top: 100px;
+  gap: 5px;
+ 
+}
+
+.ownerprofile-avatar {
+  margin-bottom: 20px;
 
 }
 
+
+.role {
+  font-weight: bold;
+  color: #5ACD51;
+}
+
+.success-message {
+  color: #5ACD51;
+  font-weight: 700;
+}
+
+/* VENUES STYLES */
+.flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding-top: 100px;
+  max-width: 1600px;
+
+}
 
 .venueslistcard {
   display: flex;
@@ -13,35 +132,34 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 20px;
-  border: 1px solid;
-  border-color: #8d99ae;
+  border: 1px solid #8d99ae;
   padding: 20px;
-  border-radius: 5px;
-  
+  border-radius: 10px;
+  background-color: #fff;
+  text-align: left;
 }
+
 
 
 .venueslistcard img {
   width: 160px;
+  border-radius: 8px;
 }
 
 .venueslist {
-  width: 1200px;
-  padding-top: 120px;
- 
-  
+  flex: 1;
+  padding-top: 20px;
 }
 
 .venueslistcard button, .btn button {
-  padding: 15px 30px;
+  padding: 10px 20px;
   background-color: #5ACD51;
-  border-color: #5ACD51;
-  color: white;
   border: none;
   border-radius: 5px;
+  color: white;
   cursor: pointer;
   font-size: 14px;
-
+  transition: background-color 0.3s ease;
 }
 
 .btn button:hover, .venueslistcard button:hover {
@@ -51,13 +169,12 @@
 .btn {
   display: flex;
   flex-direction: row;
-  gap: 30px;
+  gap: 20px;
   align-items: center;
   justify-content: space-between;
 }
 
 .btn button {
-  margin-bottom: 20px;
   display: flex;
   justify-content: flex-end;
 }
@@ -65,21 +182,18 @@
 .buttons {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  gap: 1rem;
+  gap: 10px;
 }
 
 .deletebtn button {
   background-color: #D63636;
 }
 
-.deletebtn button:hover, .button-group .close-form:hover {
+.deletebtn button:hover {
   background-color: #B82e2e;
 }
 
-
-/*OVERLAY FORM*/
-
+/* OVERLAY FORM */
 
 .overlay {
   position: fixed;
@@ -96,11 +210,10 @@
 
 .form-container {
   background-color: white;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  max-width: 400px;
   padding: 40px;
+  border-radius: 10px;
+  max-width: 400px;
+  position: relative;
 }
 
 .close-btn {
@@ -112,11 +225,12 @@
 
 .form-container form {
   display: grid;
-  gap: 10px;
+  gap: 20px;
 }
 
 .form-container label {
   font-weight: bold;
+  outline: 0;
 }
 
 .form-container input,
@@ -124,7 +238,7 @@
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 5px;
 }
 
 .form-container button {
@@ -132,8 +246,9 @@
   color: white;
   border: none;
   padding: 10px 20px;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .form-container button:hover {
@@ -144,92 +259,12 @@
   background-color: #D63636;
 }
 
-.button-group {
-  display: flex;
-  justify-content: space-between;
+form label input {
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: blue
 }
-
-
-
-/*PROFILE*/
-
-.profilecardparent {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 0px;
-  width: 400px;
-  height: 500px;
-  background-color: #009DD8;
-  gap: 30px;
-  border-radius: 10px;
-  box-shadow: 10px 10px 10px#00ABEB;
-  color:white;
+form label input:focus {
+  border-color: green;
+  outline: 1px solid #000
 }
-
-.profilecardparent p {
-  color: white;
-}
-
-.profilecardparent img {
-  border-radius: 1000px;
-  width: 200px;
-  box-shadow: 0px 0px 15px rgba(205, 138, 84, 0.5);
-}
-
-.profilecardparent h4 {
-  margin-bottom: 0px;
-}
-
-.usercard {
-  display: flex;
-  justify-content: center;
-}
-
-
-.profile-edit {
-width: 300px;
-padding: 20px;
-border: 1px solid #ccc;
-border-radius: 5px;
-box-shadow: 0px 0px 15px rgba(205, 138, 84, 0.5);
-}
-
-.profile-edit h4 {
-margin-bottom: 10px;
-}
-
-.profile-edit form {
-display: flex;
-flex-direction: column;
-gap: 10px;
-}
-
-.profile-edit label {
-font-weight: bold;
-}
-
-.profile-edit input,
-.profile-edit textarea {
-width: 100%;
-padding: 8px;
-border: 1px solid #ccc;
-border-radius: 4px;
-}
-
-.profile-edit button {
-background-color: #4caf50;
-color: white;
-border: none;
-padding: 10px 20px;
-border-radius: 4px;
-cursor: pointer;
-}
-
-.profile-edit button:hover {
-background-color: #45a049;
-}
-
-
-
