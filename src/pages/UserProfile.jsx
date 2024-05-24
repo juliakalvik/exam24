@@ -1,19 +1,10 @@
-import UserProfile from "../components/userProfile";
+import OwnerProfile from "../components/venueOwner";
+import { useOutletContext } from 'react-router-dom';
 
-export default function regularUserProfile() {
+export default function VenueOwner() {
   return (
     <>
-      <h1>Welcome back, good to see you</h1>
-      <h1>Welcome back, good to see you</h1>
-      <h1>Welcome back, good to see you</h1>
-      <h1>Welcome back, good to see you</h1>
-      <h1>Welcome back, good to see you</h1>
-      <UserProfile />
-     
-
-      
-      
-
+      <OwnerProfile />
     </>
   );
 }

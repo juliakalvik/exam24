@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate, Link } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import "./style.css";
 import { fetchProfileByName } from "../../lib/api";
 import { useEffect } from "react";
@@ -34,7 +34,7 @@ const ToggleAdmin = () => {
           <h2>Welcome back, {userName}</h2>
           <h3>Manage:</h3>
           <div className="toggle">
-            <Link to="/hostprofile">
+            <Link to="/userprofile">
               <h3>Profile</h3>
             </Link>
             <Link to="/managevenues">

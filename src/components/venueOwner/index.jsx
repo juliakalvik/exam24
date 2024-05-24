@@ -1,15 +1,26 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
 import ToggleAdmin from "../toggle";
-import { updateProfile } from "../../lib/api";
+import { updateProfile, createAPIKey } from "../../lib/api";
 
-const OwnerProfile = () => {
+const OwnerProfile = (props) => {
+  const {setisLoggedIn} = props
   const [profile, setProfile] = useState({});
   const [avatarUrl, setAvatarUrl] = useState("");
   const [updateSuccess, setUpdateSuccess] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
+      
+      const isPageRefreshed = localStorage.getItem("refreshpage");
+      if (!isPageRefreshed) {
+        localStorage.setItem("refreshpage", "true");
+        window.location.reload(); // Hard refresh the page once
+      }
+      
+      if(!localStorage.getItem("apiKey")){
+        await createAPIKey()
+      }
       const accessToken = localStorage.getItem("token");
       const url = `https://v2.api.noroff.dev/holidaze/profiles/${localStorage.getItem("name")}`;
       const options = {
@@ -33,7 +44,7 @@ const OwnerProfile = () => {
     };
 
     fetchData();
-  }, []);
+  }, [localStorage.getItem("apiKey")]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -70,7 +81,7 @@ const OwnerProfile = () => {
     <div className="ownerprofile-container">
       {Object.keys(profile).length > 0 && (
         <>
-          <ToggleAdmin />
+          {profile?.data?.venueManager  && <ToggleAdmin />}
           <div className="ownerprofile">
             {updateSuccess && (
               <div className="success-message">

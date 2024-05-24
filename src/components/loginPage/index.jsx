@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, Link } from "@tanstack/react-router";
 import { loginUser } from "../../lib/api";
-
 
 const LoginPage = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -10,9 +9,16 @@ const LoginPage = () => {
   const [isSuccess, setIsSuccess] = useState(false);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const isPageRefreshed = localStorage.getItem("isPageRefreshed");
+    if (!isPageRefreshed) {
+      localStorage.setItem("isPageRefreshed", "true");
+      window.location.reload(); // Hard refresh the page once
+    }
+  }, []);
+
   const handleOnSubmit = async (event) => {
     event.preventDefault();
-
     const { email, password } = event.target.elements;
     const payload = {
       email: email.value,
@@ -36,23 +42,8 @@ const LoginPage = () => {
   };
 
   return (
-    <div className=" ">
-      <div className="mx-auto max-w-2xl  pt-10">
-        <div className="text-center">
-          <h1 className="lg:text-4xl font-extrabold tracking-tight md:text-4xl text-gray-900 text-3xl">
-            Welcome back to <br></br>
-            <span className="inline-block pl-2 text-7xl transform skew-x-[-18deg]">
-              G
-              <span className="bg-gradient-to-tl from-turq to-black text-transparent bg-clip-text">
-                AV
-              </span>
-              EL
-            </span>{" "}
-          </h1>
-        </div>
-      </div>
-
-      <div className="mt-10 mx-auto ">
+    <div className="">
+      <div className="mt-10 mx-auto">
         {isSuccess ? (
           <section>
             <p className="text-center text-green-900">
@@ -62,7 +53,7 @@ const LoginPage = () => {
         ) : (
           <section>
             <div className="signup-form">
-              <div className=" pt-4 pb-4">
+              <div className="pt-4 pb-4">
                 <h2 className="font-bold leading-tight tracking-tight text-gray-800 text-xl dark:text-white">
                   Log in to your account
                 </h2>
@@ -74,7 +65,7 @@ const LoginPage = () => {
                     >
                       Email address
                     </label>
-                    <div className="mt-2">
+                    <div>
                       <input
                         id="email"
                         name="email"
@@ -82,12 +73,12 @@ const LoginPage = () => {
                         required
                         placeholder="Email"
                         autoComplete="email"
-                        className="bg-neutral-100 border-2 border-orange-100 text-gray-900 leading-tight tracking-tight text-sm rounded-3xl focus:ring-primary-600 focus:border-primary-600 block w-full min-w-[220px] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 "
+                        className="bg-neutral-100 border-2 border-orange-100 text-gray-900 leading-tight tracking-tight text-sm rounded-3xl focus:ring-primary-600 focus:border-primary-600 block w-full min-w-[220px] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       />
                     </div>
                   </div>
 
-                  <div className="mt-2">
+                  <div>
                     <label
                       htmlFor="password"
                       className="block text-sm font-medium leading-6 text-gray-900"
@@ -112,31 +103,12 @@ const LoginPage = () => {
                       </p>
                     )}
                   </div>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-start">
-                      <div className="flex items-center h-5">
-                        <input
-                          id="remember"
-                          aria-describedby="remember"
-                          type="checkbox"
-                          className="w-4 h-4 ml-2 border border-gray-100 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
-                        />
-                      </div>
-                      <div className="ml-1 text-sm ">
-                        <label
-                          htmlFor="remember"
-                          className="text-xs font-light text-turq dark:text-turq"
-                        >
-                          Remember me
-                        </label>
-                      </div>
-                    </div>
-                  </div>
+                  <div className="flex items-center justify-between"></div>
                   <div>
                     <button
                       disabled={isLoading}
                       type="submit"
-                      className="w-full px-4 py-2 my-2 leading-tight tracking-tight text-white "
+                      className="w-full px-4 py-2 my-2 leading-tight tracking-tight text-white"
                     >
                       {isLoading ? "Signing In" : "Login"}
                     </button>

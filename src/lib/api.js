@@ -2,7 +2,7 @@ import { API_URL } from "./constants";
 
 //* Auth / create API key:
 
-const createAPIKey = async () => {
+export const createAPIKey = async () => {
   const accessToken = localStorage.getItem("token");
   const url = "https://v2.api.noroff.dev/auth/create-api-key";
   const options = {
@@ -49,7 +49,7 @@ export async function fetchVenueById(venueId) {
 
 //* Register:
 
-export async function registerUser({ email, password, username, avatar }) {
+export async function registerUser({ email, password, username, avatar, venueManager }) {
   const url = new URL(`https://v2.api.noroff.dev/auth/register`);
 
   const userData = {
@@ -57,7 +57,9 @@ export async function registerUser({ email, password, username, avatar }) {
     email,
     password,
     avatar: { url: avatar },
+    venueManager
   };
+  console.log(userData)
 
   const options = {
     method: "POST",

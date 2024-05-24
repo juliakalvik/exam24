@@ -9,6 +9,7 @@ const SignUpForm = () => {
     email: "",
     password: "",
     avatar: "",
+    venumanager: false, // Initial value for venuemanager checkbox
   });
 
   const [errors, setErrors] = useState({
@@ -18,11 +19,13 @@ const SignUpForm = () => {
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, type, checked } = e.target;
+    const newValue = type === "checkbox" ? checked : value;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: value,
+      [name]: newValue,
     }));
+    console.log(checked)
   };
 
   const navigate = useNavigate();
@@ -72,6 +75,7 @@ const SignUpForm = () => {
         email: formData.email,
         password: formData.password,
         avatar: formData.avatar,
+        venueManager: formData.venumanager,
       });
       if (response.id) {
         // If response have id, it was a success.
@@ -139,6 +143,18 @@ const SignUpForm = () => {
           onChange={handleChange}
         />
       </label>
+
+      <div>
+        <input
+          id="venumanager"
+          name="venumanager"
+          type="checkbox"
+          onChange={handleChange}
+        />
+        <label htmlFor="venumanager">
+          Check to register as a venuemanager.
+        </label>
+      </div>
 
       <button className="submit-btn" type="submit">
         Sign Up

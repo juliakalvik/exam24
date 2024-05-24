@@ -15,9 +15,9 @@ const ManageVen = () => {
 
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
-  function onSubmit(data) {
+  async function onSubmit(data) {
     if (editMode) {
-      updateVenue(currentVenue.id, data)
+      await updateVenue(currentVenue.id, data)
         .then((updatedVenue) => {
           setProfileVenues((prevVenues) =>
             prevVenues.map((venue) =>
@@ -29,12 +29,13 @@ const ManageVen = () => {
         })
         .catch((error) => console.error("Error updating venue:", error));
     } else {
-      createNewVenue(data)
+      await createNewVenue(data)
         .then((newVenue) => setProfileVenues((prevVenues) => [...prevVenues, newVenue]))
-        .catch((error) => console.error("Error creating venue:", error));
-    }
-    setShowForm(false);
-    reset();
+        .catch((error) => console.error("Error creating venue:", error))
+      }
+      setShowForm(false);
+      reset();
+      window.location.reload()
   }
 
   useEffect(() => {
@@ -92,8 +93,8 @@ const ManageVen = () => {
     setShowForm(true);
   };
 
-  const handleDeleteVenue = (venueId) => {
-    deleteVenue(venueId)
+  const handleDeleteVenue = async (venueId) => {
+    await deleteVenue(venueId)
       .then(() => {
         setProfileVenues((prevVenues) =>
           prevVenues.filter((venue) => venue.id !== venueId)
@@ -120,7 +121,11 @@ const ManageVen = () => {
             <div>
               {profileVenues.map((venue) => (
                 <div key={venue.id} className="venueslistcard">
-                  <img src={venue.media[0].url} alt={venue.media[0].alt || venue.name} />
+                  {venue?.media?.map((media) => (
+                  <div key={media?.url} >
+                  <img src={media?.url} alt={media?.alt || venue?.name} />
+                  </div>
+                  ))}           
                   <h4>{venue.name}</h4>
                   <p>Active bookings: {venue._count.bookings}</p>
                   <div className="buttons">

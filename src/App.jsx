@@ -1,12 +1,12 @@
 import { Outlet } from "@tanstack/react-router";
-import Home from "./pages/Home";
 import Navbar from "./components/navbar";
+import { useState } from "react";
 
 function App() {
   return (
     <>
       <main>
-        <Navbar />
+        <Navbar/>
         <Outlet />
       </main>
     </>

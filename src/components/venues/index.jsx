@@ -3,40 +3,37 @@ import "./style.css";
 import { Link } from "@tanstack/react-router";
 
 const FetchVenues = ({ searchQuery }) => {
-  const [venues, setVenues] = useState([]);
   const [filteredVenues, setFilteredVenues] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchData = async (query) => {
       try {
-        const response = await fetch(
-          "https://v2.api.noroff.dev/holidaze/venues?_owner=true"
-        );
+        let response;
+        if (!query) {
+          response = await fetch(
+            `https://v2.api.noroff.dev/holidaze/venues?_owner=true&sort=created`
+          );
+        } else {
+          response = await fetch(
+            `https://v2.api.noroff.dev/holidaze/venues/search?q=${query}&_owner=true&sort=created`
+          );
+        }
         if (!response.ok) {
           throw new Error("Failed to fetch data");
         }
-        const data = await response.json();
-        setVenues(data.data);
+        const { data } = await response.json();
+        setFilteredVenues(data); // Update to setFilteredVenues(data.data)
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
 
-    fetchData();
-  }, []);
-
-  useEffect(() => {
-    const filtered = venues.filter(
-      (venue) =>
-        venue.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        venue.location.city === searchQuery
-    );
-    setFilteredVenues(filtered);
-  }, [searchQuery, venues]);
+    fetchData(searchQuery);
+  }, [searchQuery]);
 
   return (
     <div className="cardparent">
-      {filteredVenues.map((data) => (
+      {filteredVenues?.map((data) => (
         <div key={data.id}>
           <div key={data.id} className="venuescard">
             <Link to={`../venueDetails?venueId=${data.id}`}>
@@ -53,7 +50,7 @@ const FetchVenues = ({ searchQuery }) => {
                   Owner:{" "}
                   <a href={`../ownerprofile/${data.owner.name}`}>
                     {data.owner.name}
-                  </a>
+                  </a> 
                 </p>
               </div>
             </div>

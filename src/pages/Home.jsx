@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import HomeHero from '../components/homeHero';
 import FetchVenues from '../components/venues';
 
-
 const App = () => {
   const [searchQuery, setSearchQuery] = useState('');
 

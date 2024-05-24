@@ -13,3 +13,88 @@ h1, p {
 img {
     width: 400px;
 }
+
+/* style.css */
+
+/* General calendar styling */
+.react-calendar {
+    width: 100%;
+    max-width: 500px;
+    background: white;
+    border: 1px solid #a0a096;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+  }
+  
+  .react-calendar__tile {
+    max-width: initial;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f4f4f4;
+    border-radius: 4px;
+  }
+  
+  .react-calendar__tile--active {
+    background: #00aaff;
+    color: white;
+  }
+  
+  .react-calendar__tile--range {
+    background: #00aaff;
+    color: white;
+  }
+  
+  .react-calendar__tile--rangeStart, .react-calendar__tile--rangeEnd {
+    background: #00aaff;
+    color: white;
+  }
+  
+  .react-calendar__tile--disabled {
+    background: #ddd;
+    color: #888;
+  }
+  
+  .react-calendar__tile:hover:not(.react-calendar__tile--disabled) {
+    background: #00aaff;
+  }
+  
+  .react-calendar__tile--now {
+    background: green;
+    color: black;
+  }
+  
+  /* Header styling */
+  .header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .header h1 {
+    font-size: 2em;
+    margin: 0.5em 0;
+  }
+  
+  .header p {
+    font-size: 1.2em;
+    color: #666;
+  }
+  
+  /* Content styling */
+  .content1, .content2 {
+    margin: 20px 0;
+  }
+  
+  .content1 img {
+    max-width: 100%;
+    border-radius: 8px;
+  }
+  
+  /* Calendar container styling */
+  .cal {
+    display: flex;
+    justify-content: center;
+  }
+  
