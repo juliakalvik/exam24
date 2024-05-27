@@ -10,8 +10,7 @@ const ManageVen = () => {
   const [editMode, setEditMode] = useState(false);
   const [currentVenue, setCurrentVenue] = useState(null);
   const [error, setError] = useState(null);
-  
-
+  const [dropdownOpen, setDropdownOpen] = useState({});
 
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
@@ -31,17 +30,17 @@ const ManageVen = () => {
     } else {
       await createNewVenue(data)
         .then((newVenue) => setProfileVenues((prevVenues) => [...prevVenues, newVenue]))
-        .catch((error) => console.error("Error creating venue:", error))
-      }
-      setShowForm(false);
-      reset();
-      window.location.reload()
+        .catch((error) => console.error("Error creating venue:", error));
+    }
+    setShowForm(false);
+    reset();
+    window.location.reload();
   }
 
   useEffect(() => {
     const getVenuesByProfile = async (profileName) => {
       const url = new URL(
-        `https://v2.api.noroff.dev/holidaze/profiles/${profileName}/venues`
+        `https://v2.api.noroff.dev/holidaze/profiles/${profileName}/venues?_bookings=true`
       );
       const accessToken = localStorage.getItem("token");
       const apiKey = localStorage.getItem("apiKey");
@@ -61,7 +60,7 @@ const ManageVen = () => {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        setProfileVenues(data.data); 
+        setProfileVenues(data.data);
       } catch (error) {
         console.error("Error fetching venues:", error);
         setError(error.message);
@@ -102,7 +101,18 @@ const ManageVen = () => {
       })
       .catch((error) => console.error("Error deleting venue:", error));
   };
-  
+
+  const toggleDropdown = (venueId) => {
+    setDropdownOpen((prev) => ({
+      ...prev,
+      [venueId]: !prev[venueId],
+    }));
+  };
+
+  const formatDate = (dateString) => {
+    const options = { year: "numeric", month: "long", day: "numeric", hour: "2-digit", minute: "2-digit" };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
 
   return (
     <>
@@ -122,22 +132,58 @@ const ManageVen = () => {
               {profileVenues.map((venue) => (
                 <div key={venue.id} className="venueslistcard">
                   {venue?.media?.map((media) => (
-                  <div key={media?.url} >
-                  <img src={media?.url} alt={media?.alt || venue?.name} />
-                  </div>
-                  ))}           
+                    <div key={media?.url}>
+                      <img src={media?.url} alt={media?.alt || venue?.name} />
+                    </div>
+                  ))}
                   <h4>{venue.name}</h4>
-                  <p>Active bookings: {venue._count.bookings}</p>
+                  <p>
+                    Active bookings:{" "}
+                    <button
+                      type="button"
+                      onClick={() => toggleDropdown(venue.id)}
+                      className="dropdown-btn"
+                    >
+                      {venue._count.bookings}{" "}
+                      <i
+                        className={`fa-solid ${
+                          dropdownOpen[venue.id]
+                            ? "fa-angles-up"
+                            : "fa-angles-down"
+                        }`}
+                      ></i>
+                    </button>
+                  </p>
                   <div className="buttons">
                     <button type="button" onClick={() => handleEditVenue(venue)}>
                       <i className="fa-regular fa-pen-to-square"></i> Edit
                     </button>
                     <div className="deletebtn">
-                    <button type="button" onClick={() => handleDeleteVenue(venue.id)}>
+                      <button type="button" onClick={() => handleDeleteVenue(venue.id)}>
                         <i className="fa-regular fa-trash-can"></i> Delete
                       </button>
                     </div>
                   </div>
+                  {dropdownOpen[venue.id] && (
+                    <div className="bookings-dropdown">
+                      {venue.bookings.length > 0 ? (
+                        <div>
+                          <h5>Upcoming Bookings:</h5>
+                          {venue.bookings.map((booking) => (
+                            <div key={booking.id} className="booking">
+                              <p><strong>ID:</strong> {booking.id}</p>
+                              <p><strong>From:</strong> {formatDate(booking.dateFrom)}</p>
+                              <p><strong>To:</strong> {formatDate(booking.dateTo)}</p>
+                              <p><strong>Guests:</strong> {booking.guests}</p>
+                              <p><strong>Customer:</strong> {booking.customer.name} ({booking.customer.email})</p>
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        <p>No upcoming bookings</p>
+                      )}
+                    </div>
+                  )}
                 </div>
               ))}
             </div>

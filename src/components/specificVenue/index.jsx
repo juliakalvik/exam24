@@ -7,9 +7,9 @@ import './style.css';
 const VenueDetails = () => {
   const [venue, setVenue] = useState();
   const [bookingRange, setBookingRange] = useState([]);
-  const [guests, setGuests] = useState(1); // Default to 1 guest
+  const [guests, setGuests] = useState(1); 
   const [bookingConfirmation, setBookingConfirmation] = useState(null);
-  const [bookingRequested, setBookingRequested] = useState(false); // Flag to track if booking is requested
+  const [bookingRequested, setBookingRequested] = useState(false); 
   const [errorMessage, setErrorMessage] = useState("");
 
   const params = new URLSearchParams(new URL(window.location.href).search);
@@ -58,7 +58,7 @@ const VenueDetails = () => {
       }
       const bookingData = await response.json();
       setBookingConfirmation(bookingData);
-      setBookingRequested(false); // Reset booking requested flag after confirmation
+      setBookingRequested(false); 
     } catch (error) {
       console.error("Error creating booking:", error);
     }
@@ -69,7 +69,7 @@ const VenueDetails = () => {
     return venue.data.bookings.some(booking => {
       const bookingStart = new Date(booking.dateFrom);
       const bookingEnd = new Date(booking.dateTo);
-      // Check if the selected date falls within the booking interval
+     
       return isWithinInterval(date, { start: bookingStart, end: bookingEnd }) || isSameDay(date, bookingStart);
     });
   };

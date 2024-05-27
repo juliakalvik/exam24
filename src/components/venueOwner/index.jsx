@@ -1,25 +1,26 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
 import ToggleAdmin from "../toggle";
-import { updateProfile, createAPIKey } from "../../lib/api";
+import { updateProfile, createAPIKey, usersBookings } from "../../lib/api";
 
 const OwnerProfile = (props) => {
-  const {setisLoggedIn} = props
+  const { setisLoggedIn } = props;
   const [profile, setProfile] = useState({});
   const [avatarUrl, setAvatarUrl] = useState("");
   const [updateSuccess, setUpdateSuccess] = useState(false);
+  const [bookings, setBookings] = useState([]);
+  const [showBookings, setShowBookings] = useState(false); 
 
   useEffect(() => {
     const fetchData = async () => {
-      
       const isPageRefreshed = localStorage.getItem("refreshpage");
       if (!isPageRefreshed) {
         localStorage.setItem("refreshpage", "true");
-        window.location.reload(); // Hard refresh the page once
+        window.location.reload();
       }
-      
-      if(!localStorage.getItem("apiKey")){
-        await createAPIKey()
+
+      if (!localStorage.getItem("apiKey")) {
+        await createAPIKey();
       }
       const accessToken = localStorage.getItem("token");
       const url = `https://v2.api.noroff.dev/holidaze/profiles/${localStorage.getItem("name")}`;
@@ -40,6 +41,13 @@ const OwnerProfile = (props) => {
         setProfile(profileData);
       } catch (error) {
         console.error("Error fetching data:", error);
+      }
+
+      try {
+        const bookingsData = await usersBookings(localStorage.getItem("name"));
+        setBookings(bookingsData.data);
+      } catch (error) {
+        console.error("Error fetching bookings:", error);
       }
     };
 
@@ -77,11 +85,16 @@ const OwnerProfile = (props) => {
     }
   };
 
+  const formatDate = (dateString) => {
+    const options = { year: "numeric", month: "long", day: "numeric", hour: "2-digit", minute: "2-digit" };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
+
   return (
     <div className="ownerprofile-container">
       {Object.keys(profile).length > 0 && (
         <>
-          {profile?.data?.venueManager  && <ToggleAdmin />}
+          {profile?.data?.venueManager && <ToggleAdmin />}
           <div className="ownerprofile">
             {updateSuccess && (
               <div className="success-message">
@@ -141,6 +154,36 @@ const OwnerProfile = (props) => {
                 <strong>Role:</strong>{" "}
                 {profile.data.venueManager ? "Host" : "Guest"}
               </p>
+            </div>
+            <div className="upcoming-bookings">
+              <h3>
+                Upcoming Bookings
+                <i
+                  className={`fa-solid ${showBookings ? 'fa-angles-up' : 'fa-angles-down'}`}
+                  onClick={() => setShowBookings(!showBookings)}
+                  style={{ cursor: "pointer", marginLeft: "10px" }}
+                ></i>
+              </h3>
+              {showBookings && (
+                <div className="bookings-dropdown">
+                  {bookings.length > 0 ? (
+                    bookings.map((booking) => (
+                      <div key={booking.id} className="booking">
+                        <p><strong>Venue:</strong> {booking.venue.name}</p>
+                        <p><strong>Address</strong> {booking.venue.location.city}</p>
+                        <p><strong>From:</strong> {formatDate(booking.dateFrom)}</p>
+                        <p><strong>To:</strong> {formatDate(booking.dateTo)}</p>
+                        <p><strong>Guests:</strong> {booking.guests}</p>
+                        <p><strong>Booking ID:</strong> {booking.id}</p>
+                        <p><strong>This reservation was made</strong> {formatDate(booking.created)}</p>
+                        
+                      </div>
+                    ))
+                  ) : (
+                    <p>No upcoming bookings</p>
+                  )}
+                </div>
+              )}
             </div>
           </div>
           <div className="ownerprofile-sidebar">
