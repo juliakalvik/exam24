@@ -5,15 +5,17 @@ const HomeHero = ({
   setSearchQuery,
   handleCityButtonClick,
   handleClearFilter,
+  setCurrentPage
 }) => {
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
+    setCurrentPage(1)
   };
 
   return (
     <header className="herotext">
       <h1>Find your dream destination</h1>
-      <p>Where will your next adventure be?</p>
+      <p className="next-adv">Where will your next adventure be?</p>
       <div className="search-bar">
         <input
           type="text"

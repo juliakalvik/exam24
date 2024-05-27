@@ -1,3 +1,11 @@
+/* General styling for responsiveness and structure */
+.profile-parent {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
 .ownerprofile-container {
   display: flex;
   flex-direction: row;
@@ -5,7 +13,7 @@
   gap: 40px;
   max-width: 1200px;
   margin: 0 auto;
-  padding-top: 70px; 
+  padding-top: 70px;
 }
 
 .ownerprofile {
@@ -18,7 +26,7 @@
   flex-direction: row;
   align-items: center;
   margin-bottom: 20px;
-  border: 1px solid #8d99ae;
+  width: 300px;
   padding: 20px;
   border-radius: 10px;
   background-color: #fff;
@@ -61,7 +69,9 @@
 }
 
 .ownerprofile-info form {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   gap: 20px;
 }
 
@@ -70,14 +80,17 @@
 }
 
 .ownerprofile-info input,
-.ownerprofile-info textarea, .ownerprofile-sidebar input {
+.ownerprofile-info textarea,
+.ownerprofile-sidebar input {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 
-.ownerprofile-info input:focus, .ownerprofile-info textarea:focus, .ownerprofile-sidebar input:focus{
+.ownerprofile-info input:focus,
+.ownerprofile-info textarea:focus,
+.ownerprofile-sidebar input:focus {
   border-color: #4caf50;
   outline: none;
 }
@@ -97,22 +110,19 @@
   flex-direction: column;
   padding-top: 100px;
   gap: 5px;
- 
 }
 
 .ownerprofile-avatar {
   margin-bottom: 20px;
-
 }
-
 
 .role {
   font-weight: bold;
-  color: #5ACD51;
+  color: #5acd51;
 }
 
 .success-message {
-  color: #5ACD51;
+  color: #5acd51;
   font-weight: 700;
 }
 
@@ -123,7 +133,19 @@
   flex-wrap: wrap;
   padding-top: 100px;
   max-width: 1600px;
+  margin: 0 auto;
+}
 
+.venueslist {
+  flex: 1;
+  padding-top: 20px;
+}
+
+/* Flexbox for venues list on larger screens */
+.venueslist {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .venueslistcard {
@@ -139,21 +161,16 @@
   text-align: left;
 }
 
-
-
 .venueslistcard img {
   width: 160px;
   border-radius: 8px;
+  height: auto;
 }
 
-.venueslist {
-  flex: 1;
-  padding-top: 20px;
-}
-
-.venueslistcard button, .btn button {
+.venueslistcard button,
+.btn button {
   padding: 10px 20px;
-  background-color: #5ACD51;
+  background-color: #5acd51;
   border: none;
   border-radius: 5px;
   color: white;
@@ -162,7 +179,8 @@
   transition: background-color 0.3s ease;
 }
 
-.btn button:hover, .venueslistcard button:hover {
+.btn button:hover,
+.venueslistcard button:hover {
   background-color: #45a049;
 }
 
@@ -172,7 +190,6 @@
   gap: 20px;
   align-items: center;
   justify-content: space-between;
-  
 }
 
 .btn button {
@@ -187,15 +204,14 @@
 }
 
 .deletebtn button {
-  background-color: #D63636;
+  background-color: #d63636;
 }
 
 .deletebtn button:hover {
-  background-color: #B82e2e;
+  background-color: #b82e2e;
 }
 
 /* OVERLAY FORM */
-
 .overlay {
   position: fixed;
   top: 0;
@@ -213,8 +229,10 @@
   background-color: white;
   padding: 40px;
   border-radius: 10px;
-  max-width: 400px;
+  max-width: 600px;
+  width: 100%;
   position: relative;
+  margin: 20px;
 }
 
 .close-btn {
@@ -257,15 +275,62 @@
 }
 
 .button-group .close-form {
-  background-color: #D63636;
+  background-color: #d63636;
 }
 
 form label input {
   outline: 0;
   border-width: 0 0 2px;
-  border-color: blue
+  border-color: blue;
 }
+
 form label input:focus {
   border-color: green;
-  outline: 1px solid #000
+  outline: 1px solid #000;
+}
+
+/* Media Queries for Smaller Screens */
+@media (max-width: 768px) {
+  .flex {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .venueslist {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+
+  .venueslistcard {
+    flex-direction: column;
+  }
+
+  .venueslistcard img {
+    width: 100%;
+    max-width: none;
+  }
+
+  .btn {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .buttons {
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .ownerprofile-container {
+    padding-top: 20px;
+  }
+
+  .ownerprofile {
+    padding-top: 20px;
+  }
+
+  .form-container {
+    padding: 20px;
+    margin: 10px;
+  }
 }

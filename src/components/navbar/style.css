@@ -66,7 +66,7 @@
   }
   
 
-  @media (max-width: 767px) {
+  @media (max-width: 430px) {
     .nav-links {
       display: none;
       flex-direction: column;
@@ -74,9 +74,10 @@
       top: 60px;
       left: 0;
       width: 100%;
-      background-color: #333;
-      padding: 20px;
+      background-color: #009DD8;
+      margin-top: 30px;
       z-index: 10;
+      ;
     }
   
     .nav-links.open {
@@ -90,8 +91,7 @@
   
     .hamburger-menu {
       display: block;
-      margin-left: 48vw;
-     
+      margin-left: 35vw;
       
     }
   
