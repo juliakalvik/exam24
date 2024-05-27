@@ -9,7 +9,7 @@ const SignUpForm = () => {
     email: "",
     password: "",
     avatar: "",
-    venumanager: false, // Initial value for venuemanager checkbox
+    venumanager: false, 
   });
 
   const [errors, setErrors] = useState({
@@ -78,7 +78,7 @@ const SignUpForm = () => {
         venueManager: formData.venumanager,
       });
       if (response.id) {
-        // If response have id, it was a success.
+       
         console.log("Registration successful");
         await navigate({ to: "/login" });
       } else {

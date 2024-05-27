@@ -37,9 +37,15 @@ const ToggleAdmin = () => {
             <Link to="/userprofile">
               <h3>Profile</h3>
             </Link>
+            <div className="hr">
+          <hr></hr>
+        </div>
             <Link to="/managevenues">
               <h3>Venues</h3>
             </Link>
+            <div className="hr">
+          <hr></hr>
+        </div>
           </div>
         </div>
       </div>

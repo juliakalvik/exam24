@@ -9,7 +9,7 @@ const OwnerProfile = (props) => {
   const [avatarUrl, setAvatarUrl] = useState("");
   const [updateSuccess, setUpdateSuccess] = useState(false);
   const [bookings, setBookings] = useState([]);
-  const [showBookings, setShowBookings] = useState(false); 
+  const [showBookings, setShowBookings] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,7 +23,9 @@ const OwnerProfile = (props) => {
         await createAPIKey();
       }
       const accessToken = localStorage.getItem("token");
-      const url = `https://v2.api.noroff.dev/holidaze/profiles/${localStorage.getItem("name")}`;
+      const url = `https://v2.api.noroff.dev/holidaze/profiles/${localStorage.getItem(
+        "name"
+      )}`;
       const options = {
         method: "GET",
         headers: {
@@ -86,7 +88,13 @@ const OwnerProfile = (props) => {
   };
 
   const formatDate = (dateString) => {
-    const options = { year: "numeric", month: "long", day: "numeric", hour: "2-digit", minute: "2-digit" };
+    const options = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    };
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
@@ -159,7 +167,9 @@ const OwnerProfile = (props) => {
               <h3>
                 Upcoming Bookings
                 <i
-                  className={`fa-solid ${showBookings ? 'fa-angles-up' : 'fa-angles-down'}`}
+                  className={`fa-solid ${
+                    showBookings ? "fa-angles-up" : "fa-angles-down"
+                  }`}
                   onClick={() => setShowBookings(!showBookings)}
                   style={{ cursor: "pointer", marginLeft: "10px" }}
                 ></i>
@@ -169,14 +179,31 @@ const OwnerProfile = (props) => {
                   {bookings.length > 0 ? (
                     bookings.map((booking) => (
                       <div key={booking.id} className="booking">
-                        <p><strong>Venue:</strong> {booking.venue.name}</p>
-                        <p><strong>Address</strong> {booking.venue.location.city}</p>
-                        <p><strong>From:</strong> {formatDate(booking.dateFrom)}</p>
-                        <p><strong>To:</strong> {formatDate(booking.dateTo)}</p>
-                        <p><strong>Guests:</strong> {booking.guests}</p>
-                        <p><strong>Booking ID:</strong> {booking.id}</p>
-                        <p><strong>This reservation was made</strong> {formatDate(booking.created)}</p>
-                        
+                        <p>
+                          <strong>Venue:</strong> {booking.venue.name}
+                        </p>
+                        <p>
+                          <strong>Address</strong> {booking.venue.location.city}
+                        </p>
+                        <p>
+                          <strong>From:</strong> {formatDate(booking.dateFrom)}
+                        </p>
+                        <p>
+                          <strong>To:</strong> {formatDate(booking.dateTo)}
+                        </p>
+                        <p>
+                          <strong>Guests:</strong> {booking.guests}
+                        </p>
+                        <p>
+                          <strong>Booking ID:</strong> {booking.id}
+                        </p>
+                        <p>
+                          <strong>This reservation was made</strong>{" "}
+                          {formatDate(booking.created)}
+                        </p>
+                        <div className="hr">
+                          <hr></hr>
+                        </div>
                       </div>
                     ))
                   ) : (

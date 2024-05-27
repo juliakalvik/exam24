@@ -12,7 +12,12 @@ const ManageVen = () => {
   const [error, setError] = useState(null);
   const [dropdownOpen, setDropdownOpen] = useState({});
 
-  const { register, handleSubmit, formState: { errors }, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
 
   async function onSubmit(data) {
     if (editMode) {
@@ -29,7 +34,9 @@ const ManageVen = () => {
         .catch((error) => console.error("Error updating venue:", error));
     } else {
       await createNewVenue(data)
-        .then((newVenue) => setProfileVenues((prevVenues) => [...prevVenues, newVenue]))
+        .then((newVenue) =>
+          setProfileVenues((prevVenues) => [...prevVenues, newVenue])
+        )
         .catch((error) => console.error("Error creating venue:", error));
     }
     setShowForm(false);
@@ -110,7 +117,13 @@ const ManageVen = () => {
   };
 
   const formatDate = (dateString) => {
-    const options = { year: "numeric", month: "long", day: "numeric", hour: "2-digit", minute: "2-digit" };
+    const options = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    };
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
@@ -155,11 +168,17 @@ const ManageVen = () => {
                     </button>
                   </p>
                   <div className="buttons">
-                    <button type="button" onClick={() => handleEditVenue(venue)}>
+                    <button
+                      type="button"
+                      onClick={() => handleEditVenue(venue)}
+                    >
                       <i className="fa-regular fa-pen-to-square"></i> Edit
                     </button>
                     <div className="deletebtn">
-                      <button type="button" onClick={() => handleDeleteVenue(venue.id)}>
+                      <button
+                        type="button"
+                        onClick={() => handleDeleteVenue(venue.id)}
+                      >
                         <i className="fa-regular fa-trash-can"></i> Delete
                       </button>
                     </div>
@@ -171,11 +190,28 @@ const ManageVen = () => {
                           <h5>Upcoming Bookings:</h5>
                           {venue.bookings.map((booking) => (
                             <div key={booking.id} className="booking">
-                              <p><strong>ID:</strong> {booking.id}</p>
-                              <p><strong>From:</strong> {formatDate(booking.dateFrom)}</p>
-                              <p><strong>To:</strong> {formatDate(booking.dateTo)}</p>
-                              <p><strong>Guests:</strong> {booking.guests}</p>
-                              <p><strong>Customer:</strong> {booking.customer.name} ({booking.customer.email})</p>
+                              <p>
+                                <strong>ID:</strong> {booking.id}
+                              </p>
+                              <p>
+                                <strong>From:</strong>{" "}
+                                {formatDate(booking.dateFrom)}
+                              </p>
+                              <p>
+                                <strong>To:</strong>{" "}
+                                {formatDate(booking.dateTo)}
+                              </p>
+                              <p>
+                                <strong>Guests:</strong> {booking.guests}
+                              </p>
+                              <p>
+                                <strong>Customer:</strong>{" "}
+                                {booking.customer.name} (
+                                {booking.customer.email})
+                              </p>
+                              <div className="hr">
+                                <hr></hr>
+                              </div>
                             </div>
                           ))}
                         </div>
