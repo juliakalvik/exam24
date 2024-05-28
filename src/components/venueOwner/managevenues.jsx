@@ -130,7 +130,6 @@ const ManageVen = () => {
   return (
     <>
       <div className="flex">
-        <ToggleAdmin />
         <div className="venueslist">
           <div className="btn">
             <button type="button" onClick={handleAddVenue}>
@@ -276,7 +275,7 @@ const ManageVen = () => {
                   defaultValue={currentVenue?.location?.city || ""}
                   {...register("location.city", {})}
                 />
-                <input type="submit" />
+                <button type="submit">Publish venue</button>
               </form>
             </div>
           </div>

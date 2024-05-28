@@ -101,7 +101,7 @@ const OwnerProfile = (props) => {
  return (
     <>
     <div className="profile-parent">
-      {Object.keys(profile).length > 0 && profile?.data?.venueManager && <ToggleAdmin />}
+      
       <div className="ownerprofile-container">
         {Object.keys(profile).length > 0 && (
           <>
