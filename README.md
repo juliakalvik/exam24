@@ -7,6 +7,9 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
+LINKS: <br>
+* Deployed website: https://holidazeyourlife.netlify.app/
+* Figma design/prototype: https://www.figma.com/design/CcrkrDn1AX10MZSO9kgP72/HOLIDAZE-your-life?node-id=0-1&t=UUha4kNwcuakWNJw-1
 
 THE PROJECT <br>
 This is a Vite project built in React with Javascript, CSS, HTML and some Tailwind CSS.
