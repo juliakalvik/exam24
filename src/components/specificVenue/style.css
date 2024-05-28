@@ -1,0 +1,293 @@
+.ven-specific-parent {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding-top: 70px;
+}
+
+.flexspecven {
+  display: flex;
+  justify-content: center;
+}
+
+.header {
+  padding-top: 100px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 5px;
+}
+
+.header .included {
+  gap: 70px;
+}
+
+.content1 {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  gap: 20px;
+}
+
+.content2 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 50px;
+  margin-bottom: 30px;
+  padding: 5px;
+}
+
+.content1 img {
+  width: 100%; 
+  max-width: 800px; 
+  height: auto; 
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  margin: 20px;
+}
+
+@media (max-width: 767px) {
+  .content1 img {
+    max-width: 350px;
+  }
+}
+
+/*Calendar styling */
+
+.react-calendar__navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.react-calendar__navigation button {
+  background: #f1efef;
+  border: none;
+  font-size: 1em;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 2px;
+}
+
+.react-calendar__navigation button:hover {
+  background: #888;
+}
+
+.react-calendar {
+  width: 100%;
+  max-width: 500px;
+  background: white;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+}
+
+.react-calendar__tile {
+  max-width: initial;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f1efef;
+  border: none;
+  border-radius: 10px;
+  border: 1px solid rgb(187, 186, 186);
+  width: 10px;
+}
+
+.react-calendar__tile--active {
+  background: #00aaff;
+  color: white;
+}
+
+.react-calendar__tile--range {
+  background: #00aaff;
+  color: white;
+}
+
+.react-calendar__tile--rangeStart,
+.react-calendar__tile--rangeEnd {
+  background: #00aaff;
+  color: white;
+}
+
+.react-calendar__tile--disabled {
+  background: #ddd;
+  color: #a9a9a9;
+}
+
+.react-calendar__tile:hover:not(.react-calendar__tile--disabled) {
+  background: #00aaff;
+}
+
+.react-calendar__tile--now {
+  background: green;
+  color: black;
+}
+
+.react-calendar__month-view__weekdays {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+  margin-left: 20px;
+  text-decoration: none;
+}
+
+
+.cal {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-top: 40px;
+}
+
+.calendar-form-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.calendar-text {
+  display: flex;
+  justify-content: center;
+}
+
+.cal-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.submit-booking {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #5acd51;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.guest-input {
+  margin-bottom: 20px;
+  padding-right: 200px;
+}
+
+.venue-host img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.venue-host {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.host-details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.included {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px 50px 15px 50px;
+  gap: 60px;
+}
+
+.confirmation {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.conf-parent {
+  display: flex;
+  justify-content: center;
+}
+
+.included-flex {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+}
+
+@media (max-width: 768px) {
+  .included {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px 10px 20px 30px;
+  }
+
+  .venue-host {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .host-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    align-items: center;
+  }
+
+  .host-details img {
+    width: 130px;
+  }
+
+  .calendar-form-wrapper {
+    display: flex;
+    width: 320px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .calendar-form-wrapper .cal {
+    order: 1; 
+  }
+
+  .calendar-form-wrapper form {
+    order: 2; 
+  }
+}

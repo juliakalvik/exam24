@@ -1,0 +1,130 @@
+html,
+body {
+  overflow-x: hidden;
+  margin: 0;
+  height: 100%;
+}
+
+header {
+  background-image: url("/heroimg.jpg");
+  background-size: cover; 
+  background-position: center;
+  background-color: #f0f0f0;
+  padding: 20px;
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 600px;
+}
+
+
+h1,
+p {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.herotext h1, .herotext p {
+  color: white;
+}
+
+.herotext p {
+  margin-bottom: 100px;
+  margin-top: 0px;
+}
+
+.herotext h1 {
+  margin-bottom: 0;
+}
+
+
+.search-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.search-bar input[type="text"] {
+  width: 300px;
+  padding: 10px;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  font-size: 12px;
+  outline: none;
+  padding-left: 35px; 
+}
+
+
+.fa-magnifying-glass {
+  position: absolute;
+  left: 10px; 
+  top: 50%;
+  transform: translateY(-50%);
+  color: #555;
+}
+
+
+.buttonssection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 20px;
+  gap: 20px;
+}
+
+.buttonssection p {
+  margin: 0;
+}
+
+
+.city-buttons button,
+.search-bar input {
+  margin-right: 10px;
+  border: 2px solid #fff;
+  padding: 5px 10px;
+  background-color: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 12px;
+  box-shadow: 0px 0px 15px rgba(89, 164, 178, 0.5);
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.buttonssection .popular {
+  color: white;
+  
+}
+
+
+@media (max-width: 768px) {
+  .buttonssection {
+    display: block;
+    
+  }
+  .city-buttons {
+    line-height: 40px;
+    
+  }
+
+  .herotext .next-adv {
+    display: none;
+  }
+
+ .herotext {
+  gap: 30px;
+  
+  
+ 
+
+ }
+
+
+
+}
