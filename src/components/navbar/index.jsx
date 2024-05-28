@@ -1,21 +1,16 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import ToggleAdmin from "../toggle"; // Import the toggle component
 import "./style.css";
 
 export default function Nav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showProfileDropdown, setShowProfileDropdown] = useState(false); // State to control profile dropdown visibility
   const isLoggedin = !!localStorage.getItem("token");
-  const isVenueManager = localStorage.getItem("venueManager") === "true"; // Check if the user is a venue manager
+  const isVenueManager = localStorage.getItem("venueManager"); 
+
 
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-  };
-
-  const toggleProfileDropdown = () => {
-    setShowProfileDropdown(!showProfileDropdown);
   };
 
   return (
@@ -28,23 +23,12 @@ export default function Nav() {
           <p className="subtext">...your life</p>
         </div>
         <div className={`nav-links ${isMenuOpen ? "open" : ""}`}>
-          <Link to="/">Venues</Link>
+          <Link to="/">Discover</Link>
           {!isLoggedin && <Link to="/register">Register</Link>}
           {isLoggedin ? (
             <>
-              <div className="profile-dropdown">
-                <button onClick={toggleProfileDropdown}>
-                  Profile
-                  {showProfileDropdown && (
-                    <div className="dropdown-content">
-                      <Link to="/userprofile">Profile</Link>
-                      {!isVenueManager && (
-                        <Link to="/managevenues">Manage Venues</Link>
-                      )}
-                    </div>
-                  )}
-                </button>
-              </div>
+              <Link to="/userprofile">Profile</Link>
+            {isVenueManager && <Link to="/managevenues">Manage venues</Link>}
               <Link
                 to="/login"
                 onClick={() => localStorage.clear()}

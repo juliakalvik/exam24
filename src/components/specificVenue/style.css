@@ -55,7 +55,7 @@
   }
 }
 
-/* General calendar styling */
+/*Calendar styling */
 
 .react-calendar__navigation {
   display: flex;
@@ -140,7 +140,7 @@
   text-decoration: none;
 }
 
-/* Calendar container styling */
+
 .cal {
   display: flex;
   justify-content: center;

@@ -67,15 +67,6 @@ const manageVenuesRoute = new Route({
 });
 
 
-
-
-
-/* const userProfileRoute = new Route({
-  getParentRoute: () => rootRoute,
-  path: "/userprofile",
-  component: regularUserProfile,
-});
- */
 const fetchProfilesRoute = new Route({
   getParentRoute: () => rootRoute,
   path: "/profiles",

@@ -7,7 +7,7 @@ body {
 
 header {
   background-image: url("/heroimg.jpg");
-  background-size: cover; /* Adjusted value */
+  background-size: cover; 
   background-position: center;
   background-color: #f0f0f0;
   padding: 20px;
@@ -102,7 +102,7 @@ p {
   
 }
 
-/* Media Queries for Smaller Screens */
+
 @media (max-width: 768px) {
   .buttonssection {
     display: block;

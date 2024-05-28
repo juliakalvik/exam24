@@ -7,7 +7,7 @@
 
 .venuescard {
   width: 450px;
-  height: 370px;
+  height: 380px;
   display: flex;
   color: black; 
   margin: 20px; 
@@ -15,6 +15,7 @@
   flex-direction: column;
   background-color:white;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  padding-bottom: 10px;
   
 }
 
@@ -45,7 +46,8 @@
 .cardflex {
   padding-left: 18px;
   padding-right: 18px;
-  line-height: 10px;
+  line-height: 20px;
+
 }
 
 .ownerflex a {

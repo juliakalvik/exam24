@@ -42,6 +42,13 @@ const OwnerProfile = (props) => {
         }
         const profileData = await response.json();
         setProfile(profileData);
+        const hasVenueManagerInStorage = localStorage.getItem("venueManager") === "true"
+        if (profileData.data.venueManager){
+          if(!hasVenueManagerInStorage){
+              localStorage.setItem("venueManager", 'true')
+              window.location.reload()
+            }
+          }
       } catch (error) {
         console.error("Error fetching data:", error);
       }
