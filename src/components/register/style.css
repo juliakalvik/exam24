@@ -10,6 +10,10 @@
   margin: 0 auto;
 }
 
+.signup-parent {
+  padding-bottom: 60px;
+}
+
 .form-title {
   font-weight: bold;
   line-height: 1.25;

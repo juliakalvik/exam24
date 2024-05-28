@@ -7,7 +7,7 @@
 
 .ownerprofile-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   gap: 40px;
   max-width: 1200px;
@@ -18,33 +18,69 @@
 .ownerprofile {
   flex: 1;
   padding-top: 100px;
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
 }
 
 .ownerprofile-header {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+ 
+
+}
+
+.name-avatar-flex {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  width: 320px;
+  height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
-  width: 300px;
-  padding: 20px;
-  border-radius: 10px;
-  background-color: #fff;
+  border-radius: 20px;
+
+  
 }
 
 .ownerprofile-avatar {
-  width: 300px;
-  border-radius: 10px;
-  margin-right: 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto; 
+  
 }
 
 .ownerprofile-avatar img {
-  object-fit: fill;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%; /* Ensure the image is round */
 }
+
+.ownerprofile-avatar h4 {
+  position: absolute;
+  top: 20px; /* Adjust as needed */
+  left: 50%;
+  transform: translateX(-50%); /* Center the text horizontally */
+  color: white;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.2); /* Semi-transparent background */
+  padding: 10px 20px; /* Adjust padding as needed */
+  border-radius: 10px;
+}
+
+
+
 
 .ownerprofile-info {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  flex: 1;
 }
 
 .ownerprofile-header-actions {
@@ -72,6 +108,8 @@
   flex-direction: column;
   flex-wrap: wrap;
   gap: 20px;
+  padding: 10px;
+
 }
 
 .ownerprofile-info label {
@@ -81,7 +119,7 @@
 .ownerprofile-info input,
 .ownerprofile-info textarea,
 .ownerprofile-sidebar input {
-  width: 100%;
+  width: 300px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -95,13 +133,38 @@
 }
 
 .ownerprofile-stats {
+  padding: 20px;
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  padding: 15px 50px 15px 50px;
+  gap: 60px;
 }
+
+.upcoming-bookings .booking, .bookings-dropdown .booking {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  padding: 30px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+
+}
+
+.upcoming-bookings {
+  padding-bottom: 40px;
+}
+
 
 .ownerprofile-stats p {
   margin: 0;
+}
+
+.ownerprofile-stats a {
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
 }
 
 .ownerprofile-sidebar {
@@ -125,7 +188,6 @@
   font-weight: 700;
 }
 
-/* VENUES STYLES */
 .flex {
   display: flex;
   flex-direction: row;
@@ -140,7 +202,6 @@
   padding-top: 20px;
 }
 
-/* Flexbox for venues list on larger screens */
 .venueslist {
   display: flex;
   flex-direction: column;
@@ -153,7 +214,7 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 20px;
-  box-shadow: 0px 0px 15px rgba(89, 164, 178, 0.5);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   padding: 20px;
   border-radius: 10px;
   background-color: #fff;
@@ -210,7 +271,6 @@
   background-color: #b82e2e;
 }
 
-/* OVERLAY FORM */
 .overlay {
   position: fixed;
   top: 0;
@@ -263,7 +323,7 @@
   background-color: #4caf50;
   color: white;
   border: none;
-  padding: 15px ;
+  padding: 15px;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -288,7 +348,6 @@ form label input:focus {
   outline: 1px solid #000;
 }
 
-/* Media Queries for Smaller Screens */
 @media (max-width: 768px) {
   .flex {
     flex-direction: column;
@@ -327,12 +386,14 @@ form label input:focus {
 
   .ownerprofile {
     padding-top: 20px;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .form-container {
     padding: 20px;
-    
-    
   }
 
   .form-container input {

@@ -72,11 +72,19 @@ const FetchVenues = ({ searchQuery, currentPage, setCurrentPage }) => {
         ))}
       </div>
       <div className="pagination">
-        <button className="pagination-btn" disabled={currentPage === 1} onClick={handlePrevPage}>
-          {"⬅️ Previous"}
+        <button
+          className="pagination-btn"
+          disabled={currentPage === 1}
+          onClick={handlePrevPage}
+        >
+          <i className="fas fa-angle-left"></i> Previous
         </button>
-        <button className="pagination-btn" disabled={isLastPage} onClick={handleNextPage}>
-          {"Next ➡️"}
+        <button
+          className="pagination-btn"
+          disabled={isLastPage}
+          onClick={handleNextPage}
+        >
+          Next <i className="fas fa-angle-right"></i>
         </button>
       </div>
     </>

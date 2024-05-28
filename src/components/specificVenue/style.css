@@ -3,27 +3,25 @@
   flex-direction: column;
   flex-wrap: wrap;
   padding-top: 70px;
- 
- 
 }
 
 .flexspecven {
   display: flex;
   justify-content: center;
-  
 }
-
 
 .header {
   padding-top: 100px;
   display: flex;
-  justify-content: left;
+  justify-content: center;
   flex-direction: column;
+  align-items: center;
   padding-left: 5px;
-  
 }
 
-
+.header .included {
+  gap: 70px;
+}
 
 .content1 {
   display: flex;
@@ -41,10 +39,20 @@
   padding: 5px;
 }
 
-img {
-  width: 700px;
-  height: 500px;
+.content1 img {
+  width: 100%; 
+  max-width: 800px; 
+  height: auto; 
   object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  margin: 20px;
+}
+
+@media (max-width: 767px) {
+  .content1 img {
+    max-width: 350px;
+  }
 }
 
 /* General calendar styling */
@@ -138,7 +146,6 @@ img {
   justify-content: center;
   flex-wrap: wrap;
   padding-top: 40px;
-  
 }
 
 .calendar-form-wrapper {
@@ -146,7 +153,6 @@ img {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 50px;
-
 }
 
 .calendar-text {
@@ -154,6 +160,11 @@ img {
   justify-content: center;
 }
 
+.cal-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .submit-booking {
   display: flex;
@@ -162,14 +173,12 @@ img {
   align-items: center;
   justify-content: space-between;
   padding: 10px 20px;
-  background-color: #5ACD51;
+  background-color: #5acd51;
   border: none;
   border-radius: 5px;
   color: white;
   cursor: pointer;
   font-size: 16px;
-
-  
 }
 
 form input {
@@ -187,9 +196,9 @@ form input {
 
 .venue-host img {
   width: 80px;
-  height: 80px; 
-  border-radius: 50%; 
-  object-fit: cover; 
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .venue-host {
@@ -209,4 +218,76 @@ form input {
 
 .included {
   padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px 50px 15px 50px;
+  gap: 60px;
+}
+
+.confirmation {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.conf-parent {
+  display: flex;
+  justify-content: center;
+}
+
+.included-flex {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+}
+
+@media (max-width: 768px) {
+  .included {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px 10px 20px 30px;
+  }
+
+  .venue-host {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .host-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    align-items: center;
+  }
+
+  .host-details img {
+    width: 130px;
+  }
+
+  .calendar-form-wrapper {
+    display: flex;
+    width: 320px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .calendar-form-wrapper .cal {
+    order: 1; 
+  }
+
+  .calendar-form-wrapper form {
+    order: 2; 
+  }
 }

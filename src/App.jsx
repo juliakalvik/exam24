@@ -1,6 +1,7 @@
 import { Outlet } from "@tanstack/react-router";
 import Navbar from "./components/navbar";
 import { useState } from "react";
+import Footer from "./components/footer";
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <main>
         <Navbar/>
         <Outlet />
+        <Footer />
       </main>
     </>
   );

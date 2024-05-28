@@ -105,6 +105,9 @@ const SignUpForm = () => {
   
 
   return (
+    <>
+    <div className="signup-parent">
+
     <form
       className="signup-form"
       method="post"
@@ -193,6 +196,8 @@ const SignUpForm = () => {
         </Link>
       </p>
     </form>
+    </div>
+    </>
   );
 };
 

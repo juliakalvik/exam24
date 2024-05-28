@@ -115,20 +115,33 @@ const VenueDetails = () => {
         <div className="ven-specific-parent">
           <div className="header">
             <h1>{venue.data.name}</h1>
-          </div>
-          <div className="content1">
-            {venue.data.media && venue.data.media.length > 0 && (
-              <img
-                src={venue.data.media[0].url}
-                alt={venue.data.media[0].alt}
-              />
-            )}
-            <MapContainer venueAddress={venue.data.location.city} />
-          </div>
-          <div className="content2">
-            <h3>Location: {venue.data.location.city}</h3>
-            <h3>Capacity: {venue.data.maxGuests} people</h3>
-            <h3>Price per night: {venue.data.price}</h3>
+            <div className="content1">
+              {venue.data.media && venue.data.media.length > 0 && (
+                <img
+                  src={venue.data.media[0].url}
+                  alt={venue.data.media[0].alt}
+                />
+              )}
+            </div>
+            <div className="included-flex">
+              <div className="included">
+                <p>
+                  {" "}
+                  <i class="fa-solid fa-location-dot"></i> Location:{" "}
+                  {venue.data.location.city}
+                </p>
+                <p>
+                  {" "}
+                  <i class="fa-solid fa-user-group"></i> Capacity:{" "}
+                  {venue.data.maxGuests} people
+                </p>
+                <p>
+                  {" "}
+                  <i class="fa-solid fa-hand-holding-dollar"></i> Price per
+                  night: {venue.data.price}
+                </p>
+              </div>
+            </div>
           </div>
 
           <div className="venue-host">
@@ -148,10 +161,38 @@ const VenueDetails = () => {
             <hr></hr>
           </div>
 
-          <div className="calendar-text">
-            <h4>Check availability and pick your dates here</h4>
+          <div className="included-flex">
+            <div className="included">
+              <p>
+                {" "}
+                <i class="fa-solid fa-wifi"></i> Wifi:{" "}
+                {wifi ? "Available" : "Not Available"}
+              </p>
+              <p>
+                {" "}
+                <i class="fa-solid fa-square-parking"></i> Parking:{" "}
+                {parking ? "Available" : "Not Available"}
+              </p>
+              <p>
+                {" "}
+                <i class="fa-solid fa-mug-hot"></i> Breakfast:{" "}
+                {breakfast ? "Available" : "Not Available"}
+              </p>
+              <p>
+                {" "}
+                <i class="fa-solid fa-paw"></i> Pets:{" "}
+                {pets ? "Allowed" : "Not Allowed"}
+              </p>
+            </div>
           </div>
 
+          <div className="calendar-text">
+            <h4>Check availability and pick your dates here</h4>
+
+            
+          </div>
+
+          <div className="cal-flex">
           {bookingRequested ? (
             <div className="confirmation">
               <p>Booking being requested...</p>
@@ -182,8 +223,8 @@ const VenueDetails = () => {
                     >
                       Confirm booking
                     </button>
-                  <p>Capacity: {venue.data.maxGuests} people</p>
-                  <p>Price per night: {venue.data.price}</p>
+                    <p>Capacity: {venue.data.maxGuests} people</p>
+                    <p>Price per night: {venue.data.price}</p>
                   </form>
                 </>
               )}
@@ -201,6 +242,11 @@ const VenueDetails = () => {
             </div>
           )}
 
+          </div>
+
+
+          <div className="conf-parent">
+
           {accessToken && !bookingConfirmation
             ? null
             : !bookingConfirmation && (
@@ -208,6 +254,7 @@ const VenueDetails = () => {
               )}
 
           {bookingConfirmation && (
+        
             <div className="confirmation">
               <p>Booking Confirmation:</p>
               <p>
@@ -255,16 +302,10 @@ const VenueDetails = () => {
               </p>
             </div>
           )}
+          </div>
 
-          <div className="hr">
-            <hr></hr>
-          </div>
-          <div className="included">
-            <p>Wifi: {wifi ? "Available" : "Not Available"}</p>
-            <p>Parking: {parking ? "Available" : "Not Available"}</p>
-            <p>Breakfast: {breakfast ? "Available" : "Not Available"}</p>
-            <p>Pets: {pets ? "Allowed" : "Not Allowed"}</p>
-          </div>
+
+
 
           <div className="hr">
             <hr></hr>
